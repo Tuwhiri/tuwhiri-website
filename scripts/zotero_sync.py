@@ -263,9 +263,26 @@ def main():
     try:
         items = fetch_all()
     except urllib.error.HTTPError as err:
-        sys.exit(f"Zotero returned HTTP {err.code}. If the group library is "
-                 f"private, set the ZOTERO_API_KEY environment variable.")
+        if err.code == 403:
+            sys.exit(
+                "Zotero refused the request (HTTP 403).\n"
+                "The group library is not readable without credentials.\n"
+                "Either set Library Reading to 'Anyone' at\n"
+                f"  https://www.zotero.org/groups/{GROUP_ID}/settings/library\n"
+                "or create a read-only key at https://www.zotero.org/settings/keys\n"
+                "and store it as a repository secret named ZOTERO_API_KEY."
+            )
+        if err.code == 404:
+            sys.exit(f"Zotero has no group with id {GROUP_ID} (HTTP 404). "
+                     "Check the GROUP_ID setting near the top of this script.")
+        sys.exit(f"Zotero returned HTTP {err.code}: {err.reason}")
+    except urllib.error.URLError as err:
+        sys.exit(f"Could not reach Zotero: {err.reason}")
+
     print(f"  {len(items)} items retrieved\n")
+    if not items:
+        print("The Zotero group library is empty, so there is nothing to "
+              "publish yet. Add references to the group and run this again.")
 
     OUTDIR.mkdir(parents=True, exist_ok=True)
     written, seen = 0, set()
