@@ -1,24 +1,48 @@
-# Navigation Links
-#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
-#     desired widget in your `content/home/` folder.
-#   The weight parameter defines the order that the links will appear in.
+# =============================================================================
+# THE NAVIGATION BAR
+# =============================================================================
+# `weight` controls the order (smaller numbers appear first).
+# `parent` puts an item inside a drop-down menu.
+# `url` is the folder name inside content/ -- so `url: photonics` points at
+# content/photonics/index.md and appears at /photonics/ on the website.
+# =============================================================================
 
 main:
-  - name: Tour
-    url: tour
+  - name: Research
+    identifier: research
     weight: 10
+
+  - name: Atmospheric Science
+    url: atmospheric-science
+    parent: research
+    weight: 11
+
+  - name: Photonics
+    url: photonics
+    parent: research
+    weight: 12
+
+  - name: Space Systems Engineering
+    url: engineering
+    parent: research
+    weight: 13
+
   - name: News
     url: post
     weight: 20
+
   - name: People
     url: people
     weight: 30
-  - name: Events
-    url: event
-    weight: 40
+
   - name: Publications
     url: publication
+    weight: 40
+
+  - name: Events
+    url: event
     weight: 50
+
   - name: Contact
     url: contact
     weight: 60

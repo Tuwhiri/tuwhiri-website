@@ -1,0 +1,372 @@
+# =============================================================================
+# TUWHIRI TEAM ROSTER  --  the single source of truth for people
+# =============================================================================
+# This one file drives TWO things:
+#   1. The People page  (scripts/make_people.py turns it into author profiles)
+#   2. Publication tagging (scripts/zotero_sync.py uses `area` + `match` to tag
+#      each paper pulled from Zotero with the right research area)
+#
+# TO ADD A PERSON: copy a block, fill it in, save. Then either re-run
+# scripts/make_people.py, or just hand-create their content/authors/ folder.
+#
+# FIELDS
+#   slug    : folder name, lowercase, no spaces (becomes /author/<slug>/)
+#   name    : display name, exactly as it should appear on the site
+#   role    : job title / position
+#   org     : institution
+#   orcid   : ORCID iD, digits only with dashes, or leave blank
+#   email   : leave blank unless the person has agreed to it being public
+#   area    : ONE of  atmospheric-science | photonics | engineering | ''
+#             This is what tags their publications. Blank = no auto-tagging.
+#   groups  : which headings they appear under on the People page.
+#             Must match the list in content/people/index.md exactly.
+#   match   : surname spellings used to recognise them in Zotero author lists.
+#             Include accented AND unaccented forms. Case-insensitive.
+# =============================================================================
+
+people:
+
+  # --- Programme leadership -------------------------------------------------
+
+  - slug: harald-schwefel
+    name: Harald G. L. Schwefel
+    role: Programme Leader / Principal Investigator
+    org: University of Otago
+    orcid: 0000-0002-4304-6469
+    email: ''
+    area: photonics
+    groups: [Programme Leadership, Photonics]
+    match: [Schwefel]
+
+  - slug: annika-seppala
+    name: Annika Seppälä
+    role: Lead, Atmospheric Science
+    org: University of Otago
+    orcid: 0000-0002-5028-8220
+    email: ''
+    area: atmospheric-science
+    groups: [Programme Leadership, Atmospheric Science]
+    match: [Seppälä, Seppala, Seppaelae]
+
+  - slug: mallika-suresh
+    name: Mallika Suresh
+    role: Co-Lead, Photonics
+    org: University of Otago
+    orcid: 0000-0002-9126-783X
+    email: ''
+    area: photonics
+    groups: [Programme Leadership, Photonics]
+    match: [Suresh]
+
+  - slug: randy-pollock
+    name: H. Randy Pollock
+    role: Lead, Space Systems Engineering
+    org: Paihau–Robinson Research Institute, Victoria University of Wellington
+    orcid: 0000-0002-7206-3989
+    email: ''
+    area: engineering
+    groups: [Programme Leadership, Space Systems Engineering]
+    match: [Pollock]
+
+  # --- Atmospheric Science --------------------------------------------------
+
+  - slug: hannah-kessenich
+    name: Hannah Kessenich
+    role: Lead Atmospheric Modeller
+    org: University of Otago
+    orcid: 0009-0005-1591-8898
+    email: ''
+    area: atmospheric-science
+    groups: [Atmospheric Science]
+    match: [Kessenich]
+
+  - slug: richard-querel
+    name: Richard Querel
+    role: Key Researcher — Calibration & Validation
+    org: New Zealand Institute for Earth Science
+    orcid: 0000-0001-8792-2486
+    email: ''
+    area: atmospheric-science
+    groups: [Atmospheric Science]
+    match: [Querel]
+
+  - slug: hamish-lewis
+    name: Hamish Lewis
+    role: Researcher — Extreme Events
+    org: University of Waikato
+    orcid: ''
+    email: ''
+    area: atmospheric-science
+    groups: [Atmospheric Science]
+    match: [Lewis]
+
+  - slug: peter-gibson
+    name: Peter Gibson
+    role: Expert — Model Simulation Design
+    org: New Zealand Institute for Earth Science
+    orcid: 0000-0003-2095-5165
+    email: ''
+    area: atmospheric-science
+    groups: [Atmospheric Science]
+    match: [Gibson]
+
+  # --- Photonics ------------------------------------------------------------
+
+  - slug: florian-sedlmeir
+    name: Florian Sedlmeir
+    role: Expert — Resonator Physics
+    org: University of Otago
+    orcid: ''
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Sedlmeir]
+
+  - slug: niels-kjaergaard
+    name: Niels Kjærgaard
+    role: Researcher — Rydberg Sensing
+    org: University of Otago
+    orcid: ''
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Kjærgaard, Kjaergaard]
+
+  - slug: andrey-matsko
+    name: Andrey Matsko
+    role: Expert — Radiometer Design
+    org: Jet Propulsion Laboratory, NASA
+    orcid: 0000-0001-9939-9311
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Matsko]
+
+  - slug: dmitry-strekalov
+    name: Dmitry Strekalov
+    role: Key Individual — Optical Resonators
+    org: Jet Propulsion Laboratory, NASA
+    orcid: 0000-0001-6058-7390
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Strekalov]
+
+  - slug: gabriel-santamaria-botello
+    name: Gabriel Santamaría Botello
+    role: Researcher — Numerical Modelling
+    org: Colorado School of Mines
+    orcid: 0000-0003-4736-0030
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Santamaría, Santamaria, Santamaría-Botello, Santamaria-Botello, Botello]
+
+  - slug: withawat-withayachumnankul
+    name: Withawat Withayachumnankul
+    role: Researcher — THz Antennas
+    org: University of Adelaide
+    orcid: 0000-0003-1155-567X
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Withayachumnankul]
+
+  - slug: luis-enrique-garcia-munoz
+    name: Luis Enrique García Muñoz
+    role: Expert — THz Receiver Modelling
+    org: Universidad Carlos III de Madrid
+    orcid: 0000-0002-3619-7859
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [García Muñoz, Garcia Munoz, Muñoz, Munoz, García-Muñoz]
+
+  # --- Space Systems Engineering -------------------------------------------
+
+  - slug: nicholas-rattenbury
+    name: Nicholas Rattenbury
+    role: Key Individual — CubeSat Pathway
+    org: Te Pūnaha Ātea – Auckland Space Institute, University of Auckland
+    orcid: 0000-0001-5069-319X
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Rattenbury]
+
+  - slug: john-cater
+    name: John Cater
+    role: Expert — Aerospace Materials & Engineering
+    org: University of Canterbury
+    orcid: 0000-0002-3233-4000
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Cater]
+
+  - slug: betina-pavri
+    name: Betina Pavri
+    role: Researcher — Payload Systems
+    org: Paihau–Robinson Research Institute
+    orcid: 0000-0001-5133-7242
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Pavri]
+
+  - slug: emile-webster
+    name: Emile Webster
+    role: Researcher — Payload Systems
+    org: Victoria University of Wellington
+    orcid: 0000-0002-1788-5904
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Webster]
+
+  - slug: tarik-errabih
+    name: Tarik Errabih
+    role: Expert — Space Engineering
+    org: University of New South Wales
+    orcid: ''
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Errabih]
+
+  - slug: hans-philipp-sueltrop
+    name: Hans Philipp Sültrop
+    role: Key Individual — Stratospheric Platforms
+    org: Kea Aerospace
+    orcid: 0000-0002-6063-8984
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Sültrop, Sueltrop, Sultrop]
+
+  - slug: daniel-price
+    name: Daniel Price
+    role: Key Individual — Flight Operations
+    org: Kea Aerospace
+    orcid: 0000-0001-6003-0920
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Price]
+
+  - slug: mark-rocket
+    name: Mark Rocket
+    role: Key Individual
+    org: Kea Aerospace
+    orcid: ''
+    email: ''
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: []
+
+  # --- Engagement & Outreach ------------------------------------------------
+
+  - slug: jessa-barder
+    name: Jessa Barder
+    role: Lead, Engagement & Outreach
+    org: Otago Museum
+    orcid: 0000-0002-0477-2898
+    email: ''
+    area: ''
+    groups: [Engagement & Outreach]
+    match: [Barder]
+
+  - slug: mahi-paurini
+    name: Mahi Paurini
+    role: Expert / Mentor
+    org: ''
+    orcid: ''
+    email: ''
+    area: ''
+    groups: [Engagement & Outreach]
+    match: [Paurini]
+
+  - slug: iannick-monfils
+    name: Iannick Monfils
+    role: Industry — Instrument Commercialisation
+    org: Quantifi Photonics
+    orcid: 0000-0003-0524-3442
+    email: ''
+    area: ''
+    groups: [Engagement & Outreach]
+    match: [Monfils]
+
+  - slug: patrick-fogarty
+    name: Patrick Fogarty
+    role: Industry — Manufacture & Deployment
+    org: Shamrock Industries
+    orcid: ''
+    email: ''
+    area: ''
+    groups: [Engagement & Outreach]
+    match: []
+
+  - slug: simon-arnold
+    name: Simon Arnold
+    role: Project Support
+    org: Arnold & Woodhall Limited
+    orcid: 0000-0002-9398-3696
+    email: ''
+    area: ''
+    groups: [Engagement & Outreach]
+    match: []
+
+  # --- Advisory Board -------------------------------------------------------
+
+  - slug: nathaniel-livesey
+    name: Nathaniel Livesey
+    role: Advisor — Aura MLS Principal Investigator
+    org: Jet Propulsion Laboratory, NASA
+    orcid: 0000-0001-8753-9153
+    email: ''
+    area: atmospheric-science
+    groups: [Advisory Board]
+    match: [Livesey]
+
+  - slug: bernd-funke
+    name: Bernd Funke
+    role: Advisor — CMIP / APARC
+    org: Instituto de Astrofísica de Andalucía (CSIC)
+    orcid: 0000-0003-0462-4702
+    email: ''
+    area: atmospheric-science
+    groups: [Advisory Board]
+    match: [Funke]
+
+  - slug: johanna-tamminen
+    name: Johanna Tamminen
+    role: Advisor — Earth Observation & End Users
+    org: Finnish Meteorological Institute
+    orcid: 0000-0003-3095-0069
+    email: ''
+    area: atmospheric-science
+    groups: [Advisory Board]
+    match: [Tamminen]
+
+  - slug: greg-bodeker
+    name: Greg Bodeker
+    role: Advisor — Stratospheric Ozone
+    org: Bodeker Scientific
+    orcid: 0000-0003-1094-5852
+    email: ''
+    area: atmospheric-science
+    groups: [Advisory Board]
+    match: [Bodeker]
+
+  # --- Students -------------------------------------------------------------
+  # Add PhD and MSc students here as they are recruited.
+  # Example:
+  # - slug: jane-doe
+  #   name: Jane Doe
+  #   role: PhD Candidate
+  #   org: University of Otago
+  #   orcid: ''
+  #   email: ''
+  #   area: photonics
+  #   groups: [Students]
+  #   match: [Doe]

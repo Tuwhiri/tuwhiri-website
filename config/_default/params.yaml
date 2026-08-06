@@ -17,9 +17,9 @@ marketing:
   seo:
     site_type: Organization
     local_business_type: ''
-    org_name: ''
-    description: 'A highly-customizable Hugo research group theme powered by Wowchemy website builder.'
-    twitter: 'GetResearchDev'
+    org_name: 'Tuwhiri'
+    description: 'Tuwhiri: building critical capability for space-based climate monitoring with next generation photonics. An MBIE Endeavour Programme.'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -45,7 +45,7 @@ header:
 
 footer:
   copyright:
-    notice: '© {year} Me. This work is licensed under {license}'
+    notice: '© {year} Tuwhiri. Funded by the MBIE Endeavour Fund. This work is licensed under {license}'
     license:
       enable: true
       allow_derivatives: false
@@ -55,9 +55,9 @@ footer:
 # Localization
 
 locale:
-  date_format: 'Jan 2, 2006'
-  time_format: '3:04 PM'
-  address_format: en-us
+  date_format: '2 January 2006'
+  time_format: '15:04'
+  address_format: en-gb   # no en-nz option exists; en-gb is the closest match
 
 # Site features
 

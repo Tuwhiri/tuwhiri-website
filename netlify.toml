@@ -1,3 +1,17 @@
+# =============================================================================
+# NETLIFY BUILD SETTINGS
+# =============================================================================
+# Netlify reads this file automatically. You should not normally need to touch
+# it. It defines three kinds of build:
+#
+#   production      = the `main` branch  -> https://o4o.netlify.app  (public)
+#   branch-deploy   = the `draft` branch -> https://draft--o4o.netlify.app
+#   deploy-preview  = one temporary site per pull request
+#
+# The draft and preview builds overwrite robots.txt so that Google will not
+# index them. Only the live site is indexable.
+# =============================================================================
+
 [build]
   command = "hugo --gc --minify -b $URL"
   publish = "public"
@@ -6,14 +20,17 @@
   HUGO_VERSION = "0.135.0"
   HUGO_ENABLEGITINFO = "true"
 
+[context.production]
+  command = "hugo --gc --minify -b $URL"
+
 [context.production.environment]
   HUGO_ENV = "production"
 
-[context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
-
 [context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  command = 'hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL && printf "User-agent: *\nDisallow: /\n" > public/robots.txt'
+
+[context.deploy-preview]
+  command = 'hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL && printf "User-agent: *\nDisallow: /\n" > public/robots.txt'
 
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"
