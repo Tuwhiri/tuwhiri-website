@@ -1,0 +1,14 @@
+# =============================================================================
+# WHO MUST APPROVE CHANGES TO THE LIVE SITE
+# =============================================================================
+# GitHub uses this file to automatically request a review from the right people
+# whenever someone opens a pull request into `main` (the live site).
+#
+# ACTION REQUIRED: replace the three placeholders below with the real GitHub
+# usernames of Harald, Annika and Mika. A username is what appears after
+# github.com/ on their profile page, and it must be prefixed with @.
+#
+# Any ONE of them approving is enough to merge.
+# =============================================================================
+
+*   @harald-github-username @annika-github-username @mika-github-username

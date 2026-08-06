@@ -1,0 +1,49 @@
+# =============================================================================
+# AUTOMATIC PUBLICATION UPDATES FROM ZOTERO
+# =============================================================================
+# Runs every Monday morning (NZ time) and whenever you press "Run workflow"
+# on the Actions tab. It reads the Tuwhiri Zotero group library and updates
+# the publication pages on the `draft` branch.
+#
+# It never touches `main`. New papers appear on the draft site first, and
+# reach the live site only when someone promotes draft -> main.
+# =============================================================================
+
+name: Sync publications from Zotero
+
+on:
+  schedule:
+    - cron: '0 19 * * 0'   # Sunday 19:00 UTC = Monday morning in New Zealand
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: draft
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Fetch from Zotero and rebuild publication pages
+        env:
+          # Only needed if the Zotero group library is private.
+          # Add it under Settings > Secrets and variables > Actions.
+          ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
+        run: python3 scripts/zotero_sync.py
+
+      - name: Commit any changes
+        run: |
+          git config user.name  "tuwhiri-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/publication
+          git diff --staged --quiet || git commit -m "Update publications from Zotero"
+          git push
