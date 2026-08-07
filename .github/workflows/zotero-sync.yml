@@ -7,6 +7,19 @@
 #
 # It never touches `main`. New papers appear on the draft site first, and
 # reach the live site only when someone promotes draft -> main.
+#
+# IMPORTANT: when you press "Run workflow" and choose a branch, GitHub runs
+# THIS FILE AS IT EXISTS ON THAT BRANCH. If you fix this file on `main` but
+# run the workflow against `draft`, the old version on `draft` is what runs.
+# Any edit to this file must be made on both branches, or made on `draft` and
+# then merged into `main` in the usual way.
+#
+# MAINTENANCE NOTE: the `uses: actions/...@v7` lines name building blocks
+# maintained by GitHub. Every year or two GitHub retires the version of Node.js
+# an older one was built against and the log shows a deprecation warning. The
+# job keeps working; the fix is to raise the number after the @ sign. Current
+# versions: https://github.com/actions/checkout and
+# https://github.com/actions/setup-python
 # =============================================================================
 
 name: Sync publications from Zotero
@@ -23,6 +36,36 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+
+      # -- 1. Get the files -------------------------------------------------
+      - name: Check out the draft branch
+        uses: actions/checkout@v7
+        with:
+          ref: draft
+
+      # -- 2. Confirm the files we need are actually present -----------------
+      # If the upload to GitHub missed a folder, this says so plainly instead
+      # of failing later with a confusing message.
+      - name: Check that the required files exist
+        run: |
+          missing=0
+          for f in scripts/zotero_sync.py data/team.yaml; do
+            if [ -f "$f" ]; then
+              echo "found    $f"
+            else
+              echo "MISSING  $f"
+              missing=1
+            fi
+          done
+          if [ "$missing" = "1" ]; then
+            echo ""
+            echo "One or more required files are not in the draft branch."
+            echo "Re-upload them, then run this workflow again."
+            exit 1
+          fi
+
+      - name: Install Python
+        uses: actions/setup-python@v7
       - uses: actions/checkout@v7
         with:
           ref: draft
@@ -31,19 +74,68 @@ jobs:
         with:
           python-version: '3.12'
 
-      - run: pip install pyyaml
+      - name: Install the one library the script needs
+        run: pip install pyyaml
 
-      - name: Fetch from Zotero and rebuild publication pages
+      # -- 3. Test the Zotero connection on its own --------------------------
+      # Separating this from the sync means a permissions problem shows up
+      # here, with a clear explanation, rather than as a generic failure.
+      - name: Test the connection to Zotero
         env:
-          # Only needed if the Zotero group library is private.
-          # Add it under Settings > Secrets and variables > Actions.
+          ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
+        run: |
+          URL="https://api.zotero.org/groups/6627926/items/top?format=json&limit=1"
+          if [ -n "$ZOTERO_API_KEY" ]; then
+            echo "Using the ZOTERO_API_KEY secret."
+            CODE=$(curl -s -o /tmp/z.json -w '%{http_code}' -H "Zotero-API-Version: 3" -H "Zotero-API-Key: $ZOTERO_API_KEY" "$URL")
+          else
+            echo "No ZOTERO_API_KEY secret is set. Trying anonymous access."
+            CODE=$(curl -s -o /tmp/z.json -w '%{http_code}' -H "Zotero-API-Version: 3" "$URL")
+          fi
+          echo "Zotero replied with HTTP $CODE"
+          case "$CODE" in
+            200)
+              echo "Connection is fine."
+              ;;
+            403)
+              echo ""
+              echo "403 means Zotero refused to show the library."
+              echo "Either set the group's Library Reading to 'Anyone' at"
+              echo "  https://www.zotero.org/groups/6627926/settings/library"
+              echo "or create a read-only key at https://www.zotero.org/settings/keys"
+              echo "and save it as a repository secret named ZOTERO_API_KEY."
+              exit 1
+              ;;
+            404)
+              echo ""
+              echo "404 means the group id in the URL is wrong. Check it is 6627926."
+              exit 1
+              ;;
+            *)
+              echo ""
+              echo "Unexpected reply. First part of the response:"
+              head -c 400 /tmp/z.json
+              exit 1
+              ;;
+          esac
+
+      # -- 4. Do the actual work ---------------------------------------------
+      - name: Fetch from Zotero and rebuild the publication pages
+        env:
           ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
         run: python3 scripts/zotero_sync.py
 
+      # -- 5. Save any changes back to the draft branch ----------------------
       - name: Commit any changes
         run: |
+          mkdir -p content/publication
           git config user.name  "tuwhiri-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add content/publication
-          git diff --staged --quiet || git commit -m "Update publications from Zotero"
-          git push
+          git add -A content/publication
+          if git diff --staged --quiet; then
+            echo "Nothing changed. The website already matches Zotero."
+          else
+            git commit -m "Update publications from Zotero"
+            git push
+            echo "Changes pushed to the draft branch."
+          fi
