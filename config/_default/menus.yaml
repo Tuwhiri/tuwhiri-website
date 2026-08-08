@@ -21,9 +21,13 @@ main:
     url: /engineering/
     parent: research
     weight: 13
+  - name: Outreach
+    url: /outreach/
+    weight: 20
+
   - name: News
     url: /blog/
-    weight: 20
+    weight: 25
   - name: People
     url: /people/
     weight: 30

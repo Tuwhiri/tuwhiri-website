@@ -266,6 +266,16 @@ people:
 
   # --- Engagement & Outreach ------------------------------------------------
 
+  - slug: carla-meledandri
+    name: Carla Meledandri
+    role: Programme Manager
+    org: University of Otago
+    orcid: ''
+    email: ''
+    area: ''
+    groups: [Programme Leadership]
+    match: [Meledandri]
+
   - slug: jessa-barder
     name: Jessa Barder
     role: Lead, Engagement & Outreach

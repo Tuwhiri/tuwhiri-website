@@ -24,6 +24,7 @@ except ImportError:
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ROSTER = ROOT / "data" / "team.yaml"
 AUTHORS = ROOT / "data" / "authors"
+PAGES = ROOT / "content" / "authors"
 
 
 def existing_bio(path):
@@ -89,6 +90,26 @@ def main():
             encoding="utf-8")
         written.add(path.name)
 
+        # Every person also needs a stub page, or their profile does not exist.
+        #
+        # Profile pages are taxonomy pages, and Hugo only builds one for an
+        # author who appears on some publication or news item. Without this
+        # stub, anyone with nothing published yet -- students, the programme
+        # manager, most of the advisory board -- would be linked to from the
+        # People page but land on a 404.
+        stub_dir = PAGES / person["slug"]
+        stub_dir.mkdir(parents=True, exist_ok=True)
+        stub = stub_dir / "_index.md"
+        if not stub.exists():
+            stub.write_text(
+                "---\n"
+                f"title: {person['name']}\n"
+                "# This file exists only so the profile page is built.\n"
+                "# The details shown come from data/authors/"
+                f"{person['slug']}.yaml\n"
+                "---\n",
+                encoding="utf-8")
+
     strays = [p.name for p in AUTHORS.glob("*.yaml") if p.name not in written]
     if strays:
         print("These author files are not in data/team.yaml. Delete them by "
@@ -97,7 +118,8 @@ def main():
             print(f"  data/authors/{name}")
         print()
 
-    print(f"Done. {len(people)} people written to data/authors/")
+    print(f"Done. {len(people)} people written to data/authors/,")
+    print(f"      and {len(people)} profile pages under content/authors/.")
     print("Photographs go in assets/media/authors/<slug>.jpg")
 
 

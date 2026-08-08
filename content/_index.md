@@ -5,22 +5,35 @@ date: 2026-01-01
 type: landing
 
 sections:
+  # The wordmark comes first, with nothing above it.
+  #
+  # The hero draws its text before its image, so the only way to get the logo
+  # at the very top is to give the hero no title and no text. The tagline then
+  # follows in the markdown block below.
+  #
+  # `layout: stacked` is required: the default `centered` layout does not
+  # render an image at all.
   - block: hero
     content:
-      title: Tuwhiri
+      media:
+        src: hero-logo.svg
+        dark_src: hero-logo-dark.svg
+        alt: Tuwhiri
+    design:
+      layout: stacked
+      background:
+        gradient_mesh:
+          enable: true
+
+  - block: markdown
+    content:
       text: |-
         **Building critical capability for space-based climate monitoring with
         next generation photonics.**
 
         An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
-      media:
-        src: hero-logo.svg
-        dark_src: hero-logo-dark.svg
-        alt: Tuwhiri      
     design:
-      background:
-        gradient_mesh:
-          enable: true
+      columns: '1'
 
   - block: markdown
     content:
@@ -65,6 +78,29 @@ sections:
           icon: hero/rocket-launch
           url: /engineering/
 
+  # ====
+  # Outreach and engagement. Deliberately a separate block from the three
+  # research areas above, so it does not read as a fourth one.
+  # ====
+  - block: markdown
+    content:
+      title: Outreach and engagement
+      text: |-
+        Building the instrument is only part of the work. Tuwhiri also builds the
+        people, partnerships and public understanding that a long-term climate
+        monitoring capability depends on.
+
+        We work with Otago Museum to bring atmospheric science and photonics to
+        school students and the wider public, with a particular focus on
+        pathways into science for Māori and Pacific learners. Alongside this we
+        work with New Zealand industry on the manufacture, commercialisation and
+        deployment of the instrument, so that what we develop here can be built
+        and sold here.
+
+        [Read more about outreach and engagement →](/outreach/)
+    design:
+      columns: '1'
+
   - block: collection
     id: news
     content:
@@ -95,4 +131,41 @@ sections:
       button:
         text: See the people
         url: /people/
+
+  # ====
+  # Contact. All general enquiries go to the Programme Manager.
+  #
+  # The address below is a shared programme inbox rather than a personal one,
+  # so nothing here needs changing when the role turns over.
+  #
+  # BEFORE THIS PAGE GOES PUBLIC: confirm that tuwhiri@otago.ac.nz actually
+  # exists and forwards to Carla. Until it does, enquiries will bounce and
+  # nobody will know.
+  # ====
+  - block: contact-info
+    content:
+      title: Contact
+      subtitle: Enquiries about Tuwhiri are welcome. Dr Carla Meledandri, our
+        Programme Manager, is the first point of contact and will route
+        anything technical to the right person.
+      email: tuwhiri@otago.ac.nz
+      visit_title: Where we are
+      address:
+        lines:
+          - Tuwhiri Programme
+          - Department of Physics
+          - University of Otago
+          - PO Box 56
+          - Dunedin 9054
+          - New Zealand
+      connect_title: For media and outreach
+      prospective:
+        title: Students and prospective researchers
+        text: Tuwhiri supports doctoral and masters students across atmospheric
+          science, photonics and space systems engineering. Get in touch if you
+          would like to work on this.
+        button:
+          text: Meet the team
+          url: /people/
+      show_form: false
 ---
