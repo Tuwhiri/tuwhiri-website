@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: john-cater
+name:
+  display: John Cater
+  given: John
+  family: Cater
+role: Expert — Aerospace Materials & Engineering
+bio: ''
+affiliations:
+- name: University of Canterbury
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-3233-4000
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering

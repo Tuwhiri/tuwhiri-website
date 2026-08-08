@@ -43,7 +43,7 @@ EXCLUDE_TAG = "no-website"    # add this tag in Zotero to hide an item
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ROSTER = ROOT / "data" / "team.yaml"
-OUTDIR = ROOT / "content" / "publication"
+OUTDIR = ROOT / "content" / "publications"
 
 # Zotero item type -> Hugo Blox publication type
 TYPE_MAP = {
@@ -61,6 +61,9 @@ TYPE_MAP = {
 }
 
 SKIP_TYPES = {"note", "attachment", "annotation"}
+
+# Used to set the `peer_reviewed` flag the new schema supports.
+PEER_REVIEWED_TYPES = {"journalArticle", "conferencePaper", "bookSection"}
 
 
 # --- Helpers ----------------------------------------------------------------
@@ -141,20 +144,20 @@ def venue(data):
     return ""
 
 
-def venue_string(data):
-    """Build e.g.  *Optics Express*, 33(7), 10302-10311"""
+def venue_map(data):
+    """Structured venue details, as the new schema expects.
+
+    The old theme wanted one preformatted string; this generation wants
+    separate fields so citation styles can format them properly.
+    """
     name = venue(data)
     if not name:
-        return ""
-    out = f"*{name}*"
-    vol, issue, pages = (data.get("volume", ""), data.get("issue", ""),
-                         data.get("pages", ""))
-    if vol:
-        out += f", {vol}"
-        if issue:
-            out += f"({issue})"
-    if pages:
-        out += f", {pages}"
+        return None
+    out = {"name": name}
+    for src, dest in (("volume", "volume"), ("issue", "issue"),
+                      ("pages", "pages")):
+        if data.get(src):
+            out[dest] = data[src]
     return out
 
 
@@ -228,8 +231,8 @@ def build_page(item, lookup):
         "date": date,
         "publishDate": date,
         "publication_types": [TYPE_MAP.get(data.get("itemType"), "manuscript")],
-        "publication": venue_string(data),
-        "publication_short": "",
+        "publication": venue_map(data),
+        "peer_reviewed": data.get("itemType") in PEER_REVIEWED_TYPES,
         "abstract": (data.get("abstractNote") or "").strip(),
         "summary": "",
         "tags": tags,
@@ -241,6 +244,9 @@ def build_page(item, lookup):
         "url_source": data.get("url", "") or "",
         "zotero_key": item["key"],          # marker: this page is auto-managed
     }
+
+    fm = {k: v for k, v in fm.items() if v not in (None, "", [])}
+    fm["featured"] = False
 
     body = ("<!-- This page is generated automatically from the Tuwhiri Zotero "
             "group library. Edits made here will be overwritten. Change the "
@@ -279,10 +285,18 @@ def main():
     except urllib.error.URLError as err:
         sys.exit(f"Could not reach Zotero: {err.reason}")
 
-    print(f"  {len(items)} items retrieved\n")
+    print(f"  {len(items)} items retrieved from Zotero\n")
     if not items:
-        print("The Zotero group library is empty, so there is nothing to "
-              "publish yet. Add references to the group and run this again.")
+        print("=" * 68)
+        print("THE ZOTERO GROUP LIBRARY IS EMPTY.")
+        print("")
+        print("Zotero answered correctly, but there are no references in the")
+        print("group yet, so there is nothing to put on the website. This is")
+        print("not a fault. Add references to the group library at")
+        print(f"  https://www.zotero.org/groups/{GROUP_ID}")
+        print("and run this again.")
+        print("=" * 68)
+        return
 
     OUTDIR.mkdir(parents=True, exist_ok=True)
     written, seen = 0, set()

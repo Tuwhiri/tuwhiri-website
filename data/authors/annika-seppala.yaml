@@ -1,0 +1,18 @@
+schema: hugoblox/author/v1
+slug: annika-seppala
+name:
+  display: Annika Seppälä
+  given: Annika
+  family: Seppälä
+role: Lead, Atmospheric Science
+bio: ''
+affiliations:
+- name: University of Otago
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-5028-8220
+  label: ORCID
+user_groups:
+- Programme Leadership
+- Atmospheric Science
+research_area: atmospheric-science

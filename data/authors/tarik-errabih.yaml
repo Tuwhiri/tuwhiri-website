@@ -1,0 +1,14 @@
+schema: hugoblox/author/v1
+slug: tarik-errabih
+name:
+  display: Tarik Errabih
+  given: Tarik
+  family: Errabih
+role: Expert — Space Engineering
+bio: ''
+affiliations:
+- name: University of New South Wales
+links: []
+user_groups:
+- Space Systems Engineering
+research_area: engineering

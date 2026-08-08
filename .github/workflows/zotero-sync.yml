@@ -8,11 +8,16 @@
 # It never touches `main`. New papers appear on the draft site first, and
 # reach the live site only when someone promotes draft -> main.
 #
-# IMPORTANT: when you press "Run workflow" and choose a branch, GitHub runs
-# THIS FILE AS IT EXISTS ON THAT BRANCH. If you fix this file on `main` but
-# run the workflow against `draft`, the old version on `draft` is what runs.
-# Any edit to this file must be made on both branches, or made on `draft` and
-# then merged into `main` in the usual way.
+# TWO DIFFERENT BRANCHES ARE INVOLVED, WHICH CATCHES EVERYONE OUT ONCE:
+#
+#   1. The branch you pick in the "Run workflow" box decides which copy of THIS
+#      FILE gets run. Edit this file on `main` but launch from `draft`, and the
+#      old copy on `draft` is what actually runs.
+#   2. The `target_branch` input decides which branch gets the publication
+#      pages. It defaults to `draft`.
+#
+# So if you are testing on a branch such as `theme-v2`, set target_branch to
+# `theme-v2`, or the results will land on `draft` and you will not see them.
 #
 # MAINTENANCE NOTE: the `uses: actions/...@v7` lines name building blocks
 # maintained by GitHub. Every year or two GitHub retires the version of Node.js
@@ -27,7 +32,13 @@ name: Sync publications from Zotero
 on:
   schedule:
     - cron: '0 19 * * 0'   # Sunday 19:00 UTC = Monday morning in New Zealand
-  workflow_dispatch:        # lets you run it by hand from the Actions tab
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: 'Which branch to update (draft is normal)'
+        required: true
+        default: 'draft'
+        type: string
 
 permissions:
   contents: write
@@ -38,10 +49,16 @@ jobs:
     steps:
 
       # -- 1. Get the files -------------------------------------------------
-      - name: Check out the draft branch
+      # The branch this job READS FROM and WRITES TO. It is not necessarily the
+      # branch you picked when starting the job -- that one only decides which
+      # copy of this file gets run. Scheduled runs always use `draft`.
+      - name: Say which branch is being updated
+        run: echo "This run will update the '${{ inputs.target_branch || 'draft' }}' branch."
+
+      - name: Check out the branch to update
         uses: actions/checkout@v7
         with:
-          ref: draft
+          ref: ${{ inputs.target_branch || 'draft' }}
 
       # -- 2. Confirm the files we need are actually present -----------------
       # If the upload to GitHub missed a folder, this says so plainly instead
@@ -66,11 +83,6 @@ jobs:
 
       - name: Install Python
         uses: actions/setup-python@v7
-      - uses: actions/checkout@v7
-        with:
-          ref: draft
-
-      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
@@ -128,14 +140,15 @@ jobs:
       # -- 5. Save any changes back to the draft branch ----------------------
       - name: Commit any changes
         run: |
-          mkdir -p content/publication
+          mkdir -p content/publications
           git config user.name  "tuwhiri-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A content/publication
+          git add -A content/publications
           if git diff --staged --quiet; then
             echo "Nothing changed. The website already matches Zotero."
           else
             git commit -m "Update publications from Zotero"
             git push
-            echo "Changes pushed to the draft branch."
+            echo "Changes pushed to the '${{ inputs.target_branch || 'draft' }}' branch."
+            echo "Look there, not on main, for the new publication pages."
           fi

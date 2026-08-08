@@ -1,0 +1,18 @@
+schema: hugoblox/author/v1
+slug: mallika-suresh
+name:
+  display: Mallika Suresh
+  given: Mallika
+  family: Suresh
+role: Co-Lead, Photonics
+bio: ''
+affiliations:
+- name: University of Otago
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-9126-783X
+  label: ORCID
+user_groups:
+- Programme Leadership
+- Photonics
+research_area: photonics

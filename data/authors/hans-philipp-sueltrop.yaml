@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: hans-philipp-sueltrop
+name:
+  display: Hans Philipp Sültrop
+  given: Hans
+  family: Philipp Sültrop
+role: Key Individual — Stratospheric Platforms
+bio: ''
+affiliations:
+- name: Kea Aerospace
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-6063-8984
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering

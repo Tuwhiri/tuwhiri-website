@@ -1,4 +1,4 @@
-# Tuwhiri website
+# Tuwhiri website 
 
 Source for the Tuwhiri programme website.
 Built with Hugo and the Hugo Blox Research Group template, hosted on Netlify.

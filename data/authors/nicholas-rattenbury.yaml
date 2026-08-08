@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: nicholas-rattenbury
+name:
+  display: Nicholas Rattenbury
+  given: Nicholas
+  family: Rattenbury
+role: Key Individual — CubeSat Pathway
+bio: ''
+affiliations:
+- name: Te Pūnaha Ātea – Auckland Space Institute, University of Auckland
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-5069-319X
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering

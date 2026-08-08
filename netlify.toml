@@ -1,36 +1,62 @@
 # =============================================================================
 # NETLIFY BUILD SETTINGS
 # =============================================================================
-# Netlify reads this file automatically. You should not normally need to touch
-# it. It defines three kinds of build:
-#
-#   production      = the `main` branch  -> https://o4o.netlify.app  (public)
-#   branch-deploy   = the `draft` branch -> https://draft--o4o.netlify.app
+# Three kinds of build, as before:
+#   production      = `main` branch  -> https://tuwhiri.netlify.app  (public)
+#   branch-deploy   = `draft` branch -> https://draft--tuwhiri.netlify.app
 #   deploy-preview  = one temporary site per pull request
 #
-# The draft and preview builds overwrite robots.txt so that Google will not
-# index them. Only the live site is indexable.
+# WHAT CHANGED WITH THE NEW THEME
+# The previous theme was pure Hugo: Netlify downloaded one binary and ran it.
+# This theme also needs Node.js, because its styling (Tailwind) and interactive
+# parts (Preact) are compiled during the build. That is why every command below
+# begins with `pnpm install`, and why HUGO_VERSION and NODE_VERSION both matter.
+#
+# HUGO_VERSION must be at least 0.161.1. Older versions fail with confusing
+# messages about jsx or template functions rather than saying the version is
+# too old.
+#
+# `pagefind` builds the search index after Hugo has produced the pages.
 # =============================================================================
 
 [build]
-  command = "hugo --gc --minify -b $URL"
   publish = "public"
+  command = """
+    set -e
+    pnpm install --no-frozen-lockfile
+    hugo --gc --minify -b $URL
+    pnpm run pagefind
+  """
 
 [build.environment]
-  HUGO_VERSION = "0.135.0"
+  HUGO_VERSION = "0.164.0"
+  NODE_VERSION = "22"
+  GO_VERSION = "1.21.5"
   HUGO_ENABLEGITINFO = "true"
-
-[context.production]
-  command = "hugo --gc --minify -b $URL"
+  PNPM_FLAGS = "--no-frozen-lockfile"
 
 [context.production.environment]
   HUGO_ENV = "production"
 
+# The draft site and the pull request previews tell search engines not to index
+# them, so unfinished pages never appear in Google.
 [context.branch-deploy]
-  command = 'hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL && printf "User-agent: *\nDisallow: /\n" > public/robots.txt'
+  command = """
+    set -e
+    pnpm install --no-frozen-lockfile
+    hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL
+    pnpm run pagefind
+    printf "User-agent: *\nDisallow: /\n" > public/robots.txt
+  """
 
 [context.deploy-preview]
-  command = 'hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL && printf "User-agent: *\nDisallow: /\n" > public/robots.txt'
+  command = """
+    set -e
+    pnpm install --no-frozen-lockfile
+    hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL
+    pnpm run pagefind
+    printf "User-agent: *\nDisallow: /\n" > public/robots.txt
+  """
 
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"

@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: daniel-price
+name:
+  display: Daniel Price
+  given: Daniel
+  family: Price
+role: Key Individual — Flight Operations
+bio: ''
+affiliations:
+- name: Kea Aerospace
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-6003-0920
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering

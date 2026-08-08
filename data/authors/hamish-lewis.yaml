@@ -1,0 +1,14 @@
+schema: hugoblox/author/v1
+slug: hamish-lewis
+name:
+  display: Hamish Lewis
+  given: Hamish
+  family: Lewis
+role: Researcher — Extreme Events
+bio: ''
+affiliations:
+- name: University of Waikato
+links: []
+user_groups:
+- Atmospheric Science
+research_area: atmospheric-science

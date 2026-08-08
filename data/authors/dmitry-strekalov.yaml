@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: dmitry-strekalov
+name:
+  display: Dmitry Strekalov
+  given: Dmitry
+  family: Strekalov
+role: Key Individual — Optical Resonators
+bio: ''
+affiliations:
+- name: Jet Propulsion Laboratory, NASA
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-6058-7390
+  label: ORCID
+user_groups:
+- Photonics
+research_area: photonics

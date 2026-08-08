@@ -1,0 +1,14 @@
+schema: hugoblox/author/v1
+slug: florian-sedlmeir
+name:
+  display: Florian Sedlmeir
+  given: Florian
+  family: Sedlmeir
+role: Expert — Resonator Physics
+bio: ''
+affiliations:
+- name: University of Otago
+links: []
+user_groups:
+- Photonics
+research_area: photonics

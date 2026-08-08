@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: greg-bodeker
+name:
+  display: Greg Bodeker
+  given: Greg
+  family: Bodeker
+role: Advisor — Stratospheric Ozone
+bio: ''
+affiliations:
+- name: Bodeker Scientific
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0003-1094-5852
+  label: ORCID
+user_groups:
+- Advisory Board
+research_area: atmospheric-science

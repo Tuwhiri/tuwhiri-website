@@ -1,0 +1,12 @@
+schema: hugoblox/author/v1
+slug: mahi-paurini
+name:
+  display: Mahi Paurini
+  given: Mahi
+  family: Paurini
+role: Expert / Mentor
+bio: ''
+affiliations: []
+links: []
+user_groups:
+- Engagement & Outreach
