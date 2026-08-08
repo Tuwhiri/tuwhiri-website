@@ -2,8 +2,8 @@ schema: hugoblox/author/v1
 slug: harald-schwefel
 name:
   display: Harald G. L. Schwefel
-  given: Harald
-  family: G. L. Schwefel
+  given: Harald G. L.
+  family: Schwefel
 role: Programme Leader / Principal Investigator
 bio: ''
 affiliations:
