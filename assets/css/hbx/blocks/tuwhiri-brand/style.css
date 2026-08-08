@@ -1,0 +1,55 @@
+/* ==========================================================================
+   TUWHIRI BRAND OVERRIDES
+
+   Loaded automatically. The theme compiles every
+   assets/css/hbx/blocks/<name>/style.css into the site stylesheet, so this
+   file needs no configuration — but it must keep that exact path and
+   filename. A file placed directly in the folder above is silently ignored.
+   ==========================================================================
+
+   WHAT THIS FIXES
+
+   The navigation drop-down under "Research" was unreadable in light mode.
+
+   The theme's stylesheet gives the drop-down a white panel and sets a text
+   colour only for dark mode. In light mode the links inherit their colour
+   from the header. With the stock theme that is harmless, because its header
+   is pale with dark text. Our header is Te Po indigo with Atea text, as the
+   brand requires, so the links inherited Atea and rendered pale blue on
+   white: a contrast ratio of roughly 1.06 to 1, which is invisible.
+
+   Rather than forcing dark text onto a white panel, the drop-down now matches
+   the header it falls from. That gives 15.17:1 and reads as one dark band,
+   closer to the navigation in the brand document.
+   ========================================================================== */
+
+/* --- The panel -----------------------------------------------------------
+   The `.dark` selector is repeated because the theme's own `dark:bg-slate-900`
+   is more specific than a bare class and would otherwise win. */
+.nav-dropdown-list,
+.dark .nav-dropdown-list {
+  background-color: var(--hb-color-header-bg);
+  border: 1px solid color-mix(in srgb, var(--hb-color-header-fg) 15%, transparent);
+}
+
+/* --- The links inside it ------------------------------------------------- */
+.nav-dropdown-link,
+.dark .nav-dropdown-link {
+  color: var(--hb-color-header-fg);
+}
+
+/* Hover uses the lighter magenta step, which reaches 9.33:1 against Te Po.
+   The theme's default hover is primary-700, a dark magenta giving only
+   2.90:1 on this background. */
+.nav-dropdown-link:hover,
+.dark .nav-dropdown-link:hover {
+  color: var(--color-primary-400);
+}
+
+/* A restrained row highlight. The theme fills the row with solid magenta in
+   dark mode, which is heavy against Te Po and drags the text contrast down. */
+.nav-dropdown-item:hover,
+.dark .nav-dropdown-item:hover {
+  background-color: color-mix(in srgb, var(--color-primary-500) 18%, transparent);
+  border-radius: 0.25rem;
+}
