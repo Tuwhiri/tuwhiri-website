@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: nathaniel-livesey
+name:
+  display: Nathaniel Livesey
+  given: Nathaniel
+  family: Livesey
+role: Advisor — Aura MLS Principal Investigator
+bio: ''
+affiliations:
+- name: Jet Propulsion Laboratory, NASA
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-8753-9153
+  label: ORCID
+user_groups:
+- Advisory Board
+research_area: atmospheric-science

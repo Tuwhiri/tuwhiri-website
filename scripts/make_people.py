@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
-Generate content/authors/<slug>/_index.md for every person in data/team.yaml.
-
-Run from the repository root:
+Generate data/authors/<slug>.yaml for every person in data/team.yaml.
 
     python3 scripts/make_people.py
 
-Safe to re-run. It only rewrites the YAML front matter (the part between the
---- markers). Anything you have typed BELOW the front matter -- i.e. a person's
-biography -- is preserved. Avatars are never touched.
+Safe to re-run. Each author file is rebuilt from the roster, so lasting changes
+belong in data/team.yaml, not in the generated files.
 
-To add a photo for someone, drop a file called avatar.jpg (or avatar.png) into
-their folder, e.g. content/authors/harald-schwefel/avatar.jpg
+The exception is `bio`: a biography written into an author file by hand is kept.
+
+Photographs go in assets/media/authors/<slug>.jpg, matched by filename. This
+script never touches them.
 """
 
 import pathlib
@@ -24,49 +23,51 @@ except ImportError:
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ROSTER = ROOT / "data" / "team.yaml"
-AUTHORS = ROOT / "content" / "authors"
+AUTHORS = ROOT / "data" / "authors"
 
 
-def split_existing(path):
-    """Return the body text (below the front matter) of an existing file."""
+def existing_bio(path):
+    """Keep any biography already written into the author file."""
     if not path.exists():
         return ""
-    text = path.read_text(encoding="utf-8")
-    if text.startswith("---"):
-        parts = text.split("---", 2)
-        if len(parts) == 3:
-            return parts[2].lstrip("\n")
-    return ""
+    try:
+        current = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError:
+        return ""
+    return (current.get("bio") or "").strip()
 
 
-def build_front_matter(person):
+def build(person):
     name = person["name"]
-    bits = name.split()
-    first_name = bits[0]
-    last_name = bits[-1]
+    parts = name.split()
 
-    social = []
+    links = []
     if person.get("email"):
-        social.append({"icon": "envelope", "icon_pack": "fas",
-                       "link": "mailto:" + person["email"]})
+        links.append({"icon": "at-symbol",
+                      "url": "mailto:" + person["email"],
+                      "label": "Email"})
     if person.get("orcid"):
-        social.append({"icon": "orcid", "icon_pack": "ai",
-                       "link": "https://orcid.org/" + person["orcid"]})
+        links.append({"icon": "academicons/orcid",
+                      "url": "https://orcid.org/" + person["orcid"],
+                      "label": "ORCID"})
 
-    fm = {
-        "title": name,
-        "first_name": first_name,
-        "last_name": last_name,
-        "superuser": False,
+    profile = {
+        "schema": "hugoblox/author/v1",
+        "slug": person["slug"],
+        "name": {
+            "display": name,
+            "given": parts[0],
+            "family": " ".join(parts[1:]) if len(parts) > 1 else parts[0],
+        },
         "role": person.get("role", ""),
-        "organizations": [{"name": person.get("org", ""), "url": ""}],
         "bio": "",
-        "social": social,
+        "affiliations": ([{"name": person["org"]}] if person.get("org") else []),
+        "links": links,
         "user_groups": person.get("groups", []),
     }
     if person.get("area"):
-        fm["research_area"] = person["area"]
-    return fm
+        profile["research_area"] = person["area"]
+    return profile
 
 
 def main():
@@ -77,26 +78,27 @@ def main():
     people = roster.get("people", [])
     AUTHORS.mkdir(parents=True, exist_ok=True)
 
+    written = set()
     for person in people:
-        folder = AUTHORS / person["slug"]
-        folder.mkdir(parents=True, exist_ok=True)
-        path = folder / "_index.md"
+        path = AUTHORS / f"{person['slug']}.yaml"
+        profile = build(person)
+        profile["bio"] = existing_bio(path)
+        path.write_text(
+            yaml.safe_dump(profile, sort_keys=False, allow_unicode=True,
+                           default_flow_style=False),
+            encoding="utf-8")
+        written.add(path.name)
 
-        body = split_existing(path)
-        if not body.strip():
-            body = (
-                f"<!-- Write {person['name']}'s biography here, in plain "
-                "sentences. Delete this comment line first. -->\n"
-            )
+    strays = [p.name for p in AUTHORS.glob("*.yaml") if p.name not in written]
+    if strays:
+        print("These author files are not in data/team.yaml. Delete them by "
+              "hand if the person has left the programme:")
+        for name in sorted(strays):
+            print(f"  data/authors/{name}")
+        print()
 
-        fm = yaml.safe_dump(build_front_matter(person),
-                            sort_keys=False, allow_unicode=True,
-                            default_flow_style=False)
-        path.write_text(f"---\n{fm}---\n\n{body}", encoding="utf-8")
-        print(f"  wrote {path.relative_to(ROOT)}")
-
-    print(f"\nDone. {len(people)} people written to content/authors/")
-    print("Remember to add avatar.jpg files where you have photos.")
+    print(f"Done. {len(people)} people written to data/authors/")
+    print("Photographs go in assets/media/authors/<slug>.jpg")
 
 
 if __name__ == "__main__":

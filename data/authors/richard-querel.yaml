@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: richard-querel
+name:
+  display: Richard Querel
+  given: Richard
+  family: Querel
+role: Key Researcher — Calibration & Validation
+bio: ''
+affiliations:
+- name: New Zealand Institute for Earth Science
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-8792-2486
+  label: ORCID
+user_groups:
+- Atmospheric Science
+research_area: atmospheric-science

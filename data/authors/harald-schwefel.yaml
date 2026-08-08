@@ -1,0 +1,18 @@
+schema: hugoblox/author/v1
+slug: harald-schwefel
+name:
+  display: Harald G. L. Schwefel
+  given: Harald
+  family: G. L. Schwefel
+role: Programme Leader / Principal Investigator
+bio: ''
+affiliations:
+- name: University of Otago
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-4304-6469
+  label: ORCID
+user_groups:
+- Programme Leadership
+- Photonics
+research_area: photonics

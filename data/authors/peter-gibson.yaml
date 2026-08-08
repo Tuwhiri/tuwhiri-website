@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: peter-gibson
+name:
+  display: Peter Gibson
+  given: Peter
+  family: Gibson
+role: Expert — Model Simulation Design
+bio: ''
+affiliations:
+- name: New Zealand Institute for Earth Science
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0003-2095-5165
+  label: ORCID
+user_groups:
+- Atmospheric Science
+research_area: atmospheric-science

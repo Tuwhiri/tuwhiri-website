@@ -1,0 +1,16 @@
+schema: hugoblox/author/v1
+slug: jessa-barder
+name:
+  display: Jessa Barder
+  given: Jessa
+  family: Barder
+role: Lead, Engagement & Outreach
+bio: ''
+affiliations:
+- name: Otago Museum
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-0477-2898
+  label: ORCID
+user_groups:
+- Engagement & Outreach

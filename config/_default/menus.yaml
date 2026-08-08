@@ -1,0 +1,35 @@
+# =============================================================================
+# THE NAVIGATION BAR
+# =============================================================================
+# `weight` controls the order (smaller numbers first).
+# `parent` puts an item inside a drop-down menu.
+# =============================================================================
+
+main:
+  - name: Research
+    identifier: research
+    weight: 10
+  - name: Atmospheric Science
+    url: /atmospheric-science/
+    parent: research
+    weight: 11
+  - name: Photonics
+    url: /photonics/
+    parent: research
+    weight: 12
+  - name: Space Systems Engineering
+    url: /engineering/
+    parent: research
+    weight: 13
+  - name: News
+    url: /blog/
+    weight: 20
+  - name: People
+    url: /people/
+    weight: 30
+  - name: Publications
+    url: /publications/
+    weight: 40
+  - name: Events
+    url: /events/
+    weight: 50

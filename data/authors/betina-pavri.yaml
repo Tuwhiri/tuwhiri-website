@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: betina-pavri
+name:
+  display: Betina Pavri
+  given: Betina
+  family: Pavri
+role: Researcher — Payload Systems
+bio: ''
+affiliations:
+- name: Paihau–Robinson Research Institute
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-5133-7242
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering

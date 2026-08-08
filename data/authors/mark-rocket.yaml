@@ -1,0 +1,14 @@
+schema: hugoblox/author/v1
+slug: mark-rocket
+name:
+  display: Mark Rocket
+  given: Mark
+  family: Rocket
+role: Key Individual
+bio: ''
+affiliations:
+- name: Kea Aerospace
+links: []
+user_groups:
+- Space Systems Engineering
+research_area: engineering

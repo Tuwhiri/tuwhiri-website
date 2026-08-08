@@ -1,0 +1,18 @@
+schema: hugoblox/author/v1
+slug: randy-pollock
+name:
+  display: H. Randy Pollock
+  given: H.
+  family: Randy Pollock
+role: Lead, Space Systems Engineering
+bio: ''
+affiliations:
+- name: Paihau–Robinson Research Institute, Victoria University of Wellington
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-7206-3989
+  label: ORCID
+user_groups:
+- Programme Leadership
+- Space Systems Engineering
+research_area: engineering

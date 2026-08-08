@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: luis-enrique-garcia-munoz
+name:
+  display: Luis Enrique García Muñoz
+  given: Luis
+  family: Enrique García Muñoz
+role: Expert — THz Receiver Modelling
+bio: ''
+affiliations:
+- name: Universidad Carlos III de Madrid
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-3619-7859
+  label: ORCID
+user_groups:
+- Photonics
+research_area: photonics

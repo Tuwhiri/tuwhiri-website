@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: hannah-kessenich
+name:
+  display: Hannah Kessenich
+  given: Hannah
+  family: Kessenich
+role: Lead Atmospheric Modeller
+bio: ''
+affiliations:
+- name: University of Otago
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0009-0005-1591-8898
+  label: ORCID
+user_groups:
+- Atmospheric Science
+research_area: atmospheric-science

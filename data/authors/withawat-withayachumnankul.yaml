@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: withawat-withayachumnankul
+name:
+  display: Withawat Withayachumnankul
+  given: Withawat
+  family: Withayachumnankul
+role: Researcher — THz Antennas
+bio: ''
+affiliations:
+- name: University of Adelaide
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0003-1155-567X
+  label: ORCID
+user_groups:
+- Photonics
+research_area: photonics
