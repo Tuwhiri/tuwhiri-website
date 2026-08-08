@@ -1,0 +1,55 @@
+# =============================================================================
+# TUWHIRI BRAND FONTS
+# =============================================================================
+# The brand document specifies Helvetica Bold and Helvetica Regular.
+#
+# Helvetica cannot be used directly on a website. It is a licensed typeface, it
+# is not available from any web font service, and it is installed only on Apple
+# computers — Windows and Android visitors would silently get something else.
+#
+# We use ARIMO instead. Arimo is metrically identical to Helvetica: every
+# character occupies exactly the same width, so line breaks and spacing match
+# what a designer sees in Helvetica. It is open licensed and served from Google
+# Fonts, so every visitor sees the same thing.
+#
+# Print material produced by the design studio should still use real Helvetica.
+# The two will look near enough identical side by side.
+#
+# If you would rather have no web fonts at all — slightly faster, but the site
+# then looks different on each operating system — change both families below to
+# "system-sans".
+# =============================================================================
+
+hugoblox:
+  meta:
+    format: "hugoblox-font@1"
+    name: "Tuwhiri"
+    vendor: "tuwhiri"
+    version: "1.0.0"
+    license: "Apache-2.0"
+    style: "sans"
+    description: "Arimo, metrically matched to the Helvetica specified in the Tuwhiri brand"
+
+  families:
+    heading: "Arimo"
+    body: "Arimo"
+    code: "Source Code Pro"
+
+  weights:
+    heading: [700]        # brand document specifies Helvetica Bold for headings
+    body: [400, 700]
+    code: [400]
+
+  leading:
+    heading: 1.15         # tight, as the wordmark is
+    body: 1.65
+    code: 1.5
+
+  tracking:
+    heading: "-0.01em"
+    body: "0"
+
+  variable:
+    heading: true
+    body: true
+    code: false

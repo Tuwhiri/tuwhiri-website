@@ -35,7 +35,7 @@ hugoblox:
     # Mode: 'light', 'dark', or 'system' (follows OS preference)
     mode: system
     # Theme pack: name from data/themes/ or { light: "x", dark: "y" } for mix-and-match
-    pack: "default"
+    pack: "tuwhiri"   # data/themes/tuwhiri.yaml
     # Optional: Override theme pack colors
     colors:
       primary: "" # Tailwind palette name or hex (e.g., "indigo" or "#6366f1")
@@ -61,7 +61,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   typography:
     # Theme pack: name from data/fonts/
-    pack: "academic"
+    pack: "tuwhiri"   # data/fonts/tuwhiri.yaml
 
   # ────────────────────────────────────────────────────────────────────────────
   # LAYOUT
@@ -132,11 +132,11 @@ hugoblox:
     # For local_business identity type only
     location:
       address:
-        street: ""
-        city: ""
-        region: ""
+        street: "730 Cumberland Street"
+        city: "Dunedin"
+        region: "Otago"
         postal_code: ""
-        country: ""
+        country: "New Zealand"
       coordinates:
         latitude: null
         longitude: null

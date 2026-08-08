@@ -1,0 +1,72 @@
+# =============================================================================
+# TUWHIRI BRAND THEME
+# Implements Tuwhiri Light Branding Document v1.0 (Māui Studios)
+# =============================================================================
+#
+# The three brand colours and the roles the brand document gives them:
+#
+#   Ātea  | Orbital Light  #EAF3FB  openness and clarity
+#                                   -> backgrounds, negative space
+#   Tohu  | Signal Magenta #ED2884  a sign, marker or signal
+#                                   -> highlights, calls to action, key points
+#   Te Pō | Deep Space Indigo #19134A  depth and potential of the night sky
+#                                   -> typography, dark backgrounds, authority
+#
+# HOW THIS MAPS ONTO THE THEME
+# Ātea and Te Pō are surfaces: they swap places between light and dark mode.
+# Tohu is the accent in both, which matches the brand document's instruction
+# that magenta is used *selectively*, not as a background or body text colour.
+#
+# A NOTE ON CONTRAST
+# Magenta at full strength gives 3.57:1 on Ātea, which is below the 4.5:1 that
+# accessibility guidelines ask for body-size text. The theme automatically
+# generates a 50-950 scale from each colour and uses a darker step for links,
+# which reaches 5.23:1 on light backgrounds and 9.33:1 on dark. Full-strength
+# magenta is still what you see on buttons, headings and large elements, where
+# 3:1 is the requirement and it passes comfortably.
+#
+# In short: use magenta for emphasis, never for paragraphs of text. That is
+# what the brand document says too.
+# =============================================================================
+
+hugoblox:
+  meta:
+    format: "hugoblox-theme@1"
+    name: "Tuwhiri"
+    vendor: "tuwhiri"
+    version: "1.0.0"
+    license: "MIT"
+
+  type: "dual"
+
+  # --- Light mode: Ātea leads, as on pages 1.D and 3.D of the brand document
+  light:
+    colors:
+      primary: "#ED2884"    # Tohu — Signal Magenta
+      secondary: "#19134A"  # Te Pō — Deep Space Indigo
+      neutral: "slate"      # cool grey, sits well beside the indigo
+    surfaces:
+      background: "#EAF3FB" # Ātea
+      foreground: "#19134A" # Te Pō — 15.17:1, comfortably AAA
+      header:
+        background: "#19134A"
+        foreground: "#EAF3FB"
+      footer:
+        background: "#19134A"
+        foreground: "#EAF3FB"
+
+  # --- Dark mode: Te Pō leads, as on pages 1.F, 1.G and 3.A
+  dark:
+    colors:
+      primary: "#ED2884"
+      secondary: "#EAF3FB"
+      neutral: "slate"
+    surfaces:
+      background: "#19134A"
+      foreground: "#EAF3FB"
+      header:
+        background: "#19134A"
+        foreground: "#EAF3FB"
+      footer:
+        background: "#19134A"
+        foreground: "#EAF3FB"
