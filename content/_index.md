@@ -38,7 +38,7 @@ sections:
     design:
       columns: '1'
 
-  - block: focus-areas
+  - block: research-areas
     content:
       title: Three research areas
       items:
