@@ -4,7 +4,7 @@
 
 # Default language
 en:
-  locale: en-us
+  locale: en-nz   # New Zealand English: dd/mm/yyyy dates, -ise spellings
   # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
   #contentDir: content/en
 

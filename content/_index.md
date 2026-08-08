@@ -38,7 +38,7 @@ sections:
     design:
       columns: '1'
 
-  - block: research-areas
+  - block: focus-areas
     design:
       layout: cards
     content:

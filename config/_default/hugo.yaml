@@ -12,6 +12,11 @@ baseURL: 'https://tuwhiri.netlify.app/'
 ## LANGUAGE
 ############################
 
+# All dates on the site are interpreted in this zone. Without it Hugo uses UTC,
+# so a post dated "14 March" can appear a day early to New Zealand readers, and
+# scheduled posts publish twelve or thirteen hours late.
+timeZone: Pacific/Auckland
+
 defaultContentLanguage: en
 hasCJKLanguage: false
 defaultContentLanguageInSubdir: false

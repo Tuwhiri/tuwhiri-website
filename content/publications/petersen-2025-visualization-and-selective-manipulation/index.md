@@ -21,9 +21,13 @@ abstract: The development of technologies based on electromagnetic resonant stru
 tags:
 - photonics
 featured: false
-doi: 10.1063/5.0293907
-url_source: https://doi.org/10.1063/5.0293907
 zotero_key: L63TZBAA
+hugoblox:
+  ids:
+    doi: 10.1063/5.0293907
+links:
+- type: source
+  url: https://doi.org/10.1063/5.0293907
 ---
 
 <!-- This page is generated automatically from the Tuwhiri Zotero group library. Edits made here will be overwritten. Change the record in Zotero instead. -->

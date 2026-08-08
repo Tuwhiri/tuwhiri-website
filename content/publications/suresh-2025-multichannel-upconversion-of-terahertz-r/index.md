@@ -27,9 +27,13 @@ tags:
 - Terahertz detectors
 - Whispering gallery modes
 featured: false
-doi: 10.1364/OE.557651
-url_source: https://opg.optica.org/oe/abstract.cfm?uri=oe-33-5-10302
 zotero_key: DFV6YH3L
+hugoblox:
+  ids:
+    doi: 10.1364/OE.557651
+links:
+- type: source
+  url: https://opg.optica.org/oe/abstract.cfm?uri=oe-33-5-10302
 ---
 
 <!-- This page is generated automatically from the Tuwhiri Zotero group library. Edits made here will be overwritten. Change the record in Zotero instead. -->

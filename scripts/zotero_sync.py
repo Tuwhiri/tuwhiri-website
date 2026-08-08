@@ -237,13 +237,16 @@ def build_page(item, lookup):
         "summary": "",
         "tags": tags,
         "featured": False,
-        "doi": data.get("DOI", "") or "",
-        "url_pdf": "",
-        "url_code": "",
-        "url_dataset": "",
-        "url_source": data.get("url", "") or "",
         "zotero_key": item["key"],          # marker: this page is auto-managed
     }
+
+    # Identifiers and links use the current schema. The older top-level `doi`
+    # and `url_source` keys still work but make Hugo print deprecation
+    # warnings on every build.
+    if data.get("DOI"):
+        fm["hugoblox"] = {"ids": {"doi": data["DOI"]}}
+    if data.get("url"):
+        fm["links"] = [{"type": "source", "url": data["url"]}]
 
     fm = {k: v for k, v in fm.items() if v not in (None, "", [])}
     fm["featured"] = False

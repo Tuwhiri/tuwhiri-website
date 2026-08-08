@@ -115,7 +115,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   copyright:
     # Copyright notice - supports {year}, {name}, {license} placeholders
-    notice: "© {year} {name}. This work is licensed under {license}"
+    notice: "© {year} {name}. Funded by the MBIE Endeavour Fund. This work is licensed under {license}"
     license:
       type: cc # cc | custom
       allow_derivatives: false
@@ -240,9 +240,9 @@ hugoblox:
   # Regional formatting preferences
   # ────────────────────────────────────────────────────────────────────────────
   locale:
-    date_format: "Jan 2, 2006" # Go time format
-    time_format: "3:04 PM"
-    address_format: en-us
+    date_format: "2 January 2006" # New Zealand order: day, month, year
+    time_format: "15:04" # 24-hour clock
+    address_format: en-gb # closest available; the theme has no en-nz option
 
   # ────────────────────────────────────────────────────────────────────────────
   # SECURITY
