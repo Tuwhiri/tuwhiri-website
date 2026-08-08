@@ -39,22 +39,24 @@ sections:
       columns: '1'
 
   - block: research-areas
+    design:
+      layout: cards
     content:
       title: Three research areas
       items:
-        - title: Atmospheric Science
-          text: What the data is for — how ozone drives extreme weather, what
+        - name: Atmospheric Science
+          description: What the data is for — how ozone drives extreme weather, what
             accuracy end users need, and what we can retrieve from the instrument.
           icon: hero/cloud
           url: /atmospheric-science/
-        - title: Photonics
-          text: The sensor itself — electro-optic up-conversion in
+        - name: Photonics
+          description: The sensor itself — electro-optic up-conversion in
             whispering-gallery-mode resonators, from bench demonstration to
             flight-ready device.
           icon: hero/sparkles
           url: /photonics/
-        - title: Space Systems Engineering
-          text: Everything around the sensor — the payload, beam-steering
+        - name: Space Systems Engineering
+          description: Everything around the sensor — the payload, beam-steering
             antenna, thermal and vibration control, and the flight campaigns.
           icon: hero/rocket-launch
           url: /engineering/
