@@ -285,10 +285,18 @@ def main():
     except urllib.error.URLError as err:
         sys.exit(f"Could not reach Zotero: {err.reason}")
 
-    print(f"  {len(items)} items retrieved\n")
+    print(f"  {len(items)} items retrieved from Zotero\n")
     if not items:
-        print("The Zotero group library is empty, so there is nothing to "
-              "publish yet. Add references to the group and run this again.")
+        print("=" * 68)
+        print("THE ZOTERO GROUP LIBRARY IS EMPTY.")
+        print("")
+        print("Zotero answered correctly, but there are no references in the")
+        print("group yet, so there is nothing to put on the website. This is")
+        print("not a fault. Add references to the group library at")
+        print(f"  https://www.zotero.org/groups/{GROUP_ID}")
+        print("and run this again.")
+        print("=" * 68)
+        return
 
     OUTDIR.mkdir(parents=True, exist_ok=True)
     written, seen = 0, set()
