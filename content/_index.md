@@ -13,6 +13,10 @@ sections:
         next generation photonics.**
 
         An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
+      media:
+        src: hero-logo.svg
+        dark_src: hero-logo-dark.svg
+        alt: Tuwhiri      
     design:
       background:
         gradient_mesh:
@@ -38,7 +42,7 @@ sections:
     design:
       columns: '1'
 
-  - block: focus-areas
+  - block: research-areas
     design:
       layout: cards
     content:
