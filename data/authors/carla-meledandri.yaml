@@ -1,0 +1,13 @@
+schema: hugoblox/author/v1
+slug: carla-meledandri
+name:
+  display: Carla Meledandri
+  given: Carla
+  family: Meledandri
+role: Programme Manager
+bio: ''
+affiliations:
+- name: University of Otago
+links: []
+user_groups:
+- Programme Leadership
