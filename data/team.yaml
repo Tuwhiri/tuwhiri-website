@@ -286,16 +286,6 @@ people:
     groups: [Engagement & Outreach]
     match: [Barder]
 
-  - slug: mahi-paurini
-    name: Mahi Paurini
-    role: Expert / Mentor
-    org: ''
-    orcid: ''
-    email: ''
-    area: ''
-    groups: [Engagement & Outreach]
-    match: [Paurini]
-
   - slug: iannick-monfils
     name: Iannick Monfils
     role: Industry — Instrument Commercialisation
