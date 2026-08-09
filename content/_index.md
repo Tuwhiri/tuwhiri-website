@@ -166,15 +166,15 @@ sections:
       title: Industry partners
       items:
         - name: Kea Aerospace
-          image: partners/kea-aerospace.svg
+          image: partners/kea-aerospace.png
           url: https://www.keaaerospace.com
           description: Stratospheric flight platforms
         - name: Quantifi Photonics
-          image: partners/quantifi.svg
+          image: partners/quantifi.png
           url: https://quantifiphotonics.com
           description: Instrument commercialisation
         - name: Shamrock Industries
-          image: partners/shamrock.svg
+          image: partners/shamrock.png
           url: ''
           description: Manufacture and deployment
         - name: Q-Bifrost

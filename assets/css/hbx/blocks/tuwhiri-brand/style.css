@@ -55,24 +55,35 @@
 }
 
 /* ==========================================================================
-   PARTNER LOGOS: SHOWN IN THEIR OWN COLOURS
+   PARTNER LOGOS: LET WIDE ONES USE THEIR FULL WIDTH
 
-   The logos block desaturates every logo to grey at 60% opacity and only
-   restores the colour when the pointer is over it. That is a common web
-   fashion, but most universities and companies require their mark to be shown
-   unaltered, in approved colours. Otago's brand rules are explicit about it,
-   and a greyed-out logo is also poor for anyone with low vision.
+   The block gives every logo a fixed slot 10rem wide and caps the image at
+   7rem, on the reasoning that a uniform footprint looks tidier. At the 3.5rem
+   height it uses, that cap only suits logos up to about 2:1.
 
-   There is no setting for this in the block, so it is turned off here.
-   The gentle lift on hover is kept.
+   Anything wider is scaled down to fit, and loses height as a result. Kea
+   Aerospace is 4.45:1, so it was rendering 1.57rem tall against Shamrock's
+   3.5rem -- less than half the size, and visibly weaker on the page.
+
+   Raising the cap to 16rem lets even the widest of yours (Kea, at 4.45:1) keep
+   its full 3.5rem height. The slot becomes
+   flexible so it grows with the logo instead of clipping it, while a minimum
+   keeps narrow logos from crowding together.
+
+   Colour is now handled by `logo_style: color` in content/_index.md, so the
+   filter override that used to live here has been removed.
    ========================================================================== */
 
 .logos-block-container img {
-  filter: none !important;
-  opacity: 1 !important;
+  /* Overrides an inline style, so !important is unavoidable here. */
+  max-width: 16rem !important;
 }
 
-/* Keep a subtle hover response without touching the colours. */
-.logos-block-container .group:hover img {
-  transform: scale(1.06);
+/* The slot: `w-40` fixed becomes flexible with a floor. */
+.logos-block-container a,
+.logos-block-container [role="img"] {
+  width: auto !important;
+  min-width: 18rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
