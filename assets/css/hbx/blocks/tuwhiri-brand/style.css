@@ -53,3 +53,26 @@
   background-color: color-mix(in srgb, var(--color-primary-500) 18%, transparent);
   border-radius: 0.25rem;
 }
+
+/* ==========================================================================
+   PARTNER LOGOS: SHOWN IN THEIR OWN COLOURS
+
+   The logos block desaturates every logo to grey at 60% opacity and only
+   restores the colour when the pointer is over it. That is a common web
+   fashion, but most universities and companies require their mark to be shown
+   unaltered, in approved colours. Otago's brand rules are explicit about it,
+   and a greyed-out logo is also poor for anyone with low vision.
+
+   There is no setting for this in the block, so it is turned off here.
+   The gentle lift on hover is kept.
+   ========================================================================== */
+
+.logos-block-container img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Keep a subtle hover response without touching the colours. */
+.logos-block-container .group:hover img {
+  transform: scale(1.06);
+}

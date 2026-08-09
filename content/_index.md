@@ -122,6 +122,61 @@ sections:
     design:
       view: citation
 
+  # ====
+  # Partner logos, in two groups. The logos block has no built-in grouping,
+  # so each group is its own block with its own heading.
+  #
+  # Image paths are relative to assets/media/, so `partners/otago.svg` means
+  # assets/media/partners/otago.svg. See assets/media/partners/README.md for
+  # what to obtain and how to name it.
+  # ====
+  - block: logos
+    id: partners
+    content:
+      title: Affiliated partners
+      logos:
+        - name: University of Otago
+          image: partners/otago.svg
+          url: https://www.otago.ac.nz
+          description: Host institution
+        - name: Dodd-Walls Centre
+          image: partners/dodd-walls.svg
+          url: https://doddwalls.ac.nz
+          description: Centre of Research Excellence for Photonic and Quantum Technologies
+        - name: University of Waikato
+          image: partners/waikato.svg
+          url: https://www.waikato.ac.nz
+          description: Atmospheric science
+        - name: Paihau–Robinson Research Institute
+          image: partners/paihau-robinson.svg
+          url: https://www.wgtn.ac.nz/robinson
+          description: Space systems engineering, Victoria University of Wellington
+    design:
+      display_mode: grid
+
+  - block: logos
+    content:
+      title: Industry partners
+      logos:
+        - name: Kea Aerospace
+          image: partners/kea-aerospace.svg
+          url: https://www.keaaerospace.com
+          description: Stratospheric flight platforms
+        - name: Quantifi Photonics
+          image: partners/quantifi.svg
+          url: https://quantifiphotonics.com
+          description: Instrument commercialisation
+        - name: Shamrock Industries
+          image: partners/shamrock.svg
+          url: ''
+          description: Manufacture and deployment
+        - name: Q-Bifrost
+          image: partners/q-bifrost.svg
+          url: ''
+          description: Industry partner
+    design:
+      display_mode: grid
+
   - block: cta-card
     content:
       title: Meet the team
@@ -143,6 +198,7 @@ sections:
   # nobody will know.
   # ====
   - block: contact-info
+    id: contact
     content:
       title: Contact
       subtitle: Enquiries about Tuwhiri are welcome. Dr Carla Meledandri, our
