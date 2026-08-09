@@ -38,9 +38,45 @@ def existing_bio(path):
     return (current.get("bio") or "").strip()
 
 
+def split_name(person):
+    """Work out given / middle / family from the roster entry.
+
+    The naive rule -- first word is the given name, everything else is the
+    family name -- gets middle names and initials wrong, and the family name is
+    what the People page sorts on. "Harald G. L. Schwefel" would sort under G,
+    and "H. Randy Pollock" under R.
+
+    So the roster may state it explicitly:
+
+        - name: Harald G. L. Schwefel
+          family: Schwefel          # optional, overrides the guess
+          given: Harald             # optional
+
+    Where `family` is given, everything between it and the given name is
+    treated as a middle name. Where it is not, we fall back to the old rule,
+    which is right for the ordinary two-word case.
+    """
+    name = person["name"]
+    parts = name.split()
+    given = person.get("given") or parts[0]
+    family = person.get("family")
+    if not family:
+        family = " ".join(parts[1:]) if len(parts) > 1 else parts[0]
+    middle = name
+    for piece in (given, family):
+        middle = middle.replace(piece, "", 1)
+    middle = " ".join(middle.split())
+    return given, middle, family
+
+
 def build(person):
     name = person["name"]
     parts = name.split()
+
+    given, middle, family = split_name(person)
+    name_block = {"display": name, "given": given, "family": family}
+    if middle:
+        name_block["middle"] = middle
 
     links = []
     if person.get("email"):
@@ -55,11 +91,7 @@ def build(person):
     profile = {
         "schema": "hugoblox/author/v1",
         "slug": person["slug"],
-        "name": {
-            "display": name,
-            "given": parts[0],
-            "family": " ".join(parts[1:]) if len(parts) > 1 else parts[0],
-        },
+        "name": name_block,
         "role": person.get("role", ""),
         "bio": "",
         "affiliations": ([{"name": person["org"]}] if person.get("org") else []),
@@ -104,18 +136,39 @@ def main():
             stub.write_text(
                 "---\n"
                 f"title: {person['name']}\n"
-                "# This file exists only so the profile page is built.\n"
+                "# This file switches the profile page ON for this person.\n"
+                "# content/authors/_index.md switches every author page OFF by\n"
+                "# default, so that external co-authors from Zotero do not get\n"
+                "# pages of their own. Removing this file hides the profile.\n"
+                "#\n"
                 "# The details shown come from data/authors/"
                 f"{person['slug']}.yaml\n"
+                "build:\n"
+                "  render: always\n"
+                "  list: always\n"
                 "---\n",
                 encoding="utf-8")
 
-    strays = [p.name for p in AUTHORS.glob("*.yaml") if p.name not in written]
-    if strays:
-        print("These author files are not in data/team.yaml. Delete them by "
-              "hand if the person has left the programme:")
-        for name in sorted(strays):
-            print(f"  data/authors/{name}")
+    # Remove data and stub pages for anyone no longer in the roster, so that
+    # deleting a person from data/team.yaml is enough to remove them from the
+    # site. Without this they linger: the profile file stays behind and their
+    # page keeps being published.
+    slugs = {person["slug"] for person in people}
+    removed = []
+    for path in sorted(AUTHORS.glob("*.yaml")):
+        if path.name not in written:
+            path.unlink()
+            removed.append(f"data/authors/{path.name}")
+    for folder in sorted(PAGES.iterdir()) if PAGES.exists() else []:
+        if folder.is_dir() and folder.name not in slugs:
+            for child in folder.iterdir():
+                child.unlink()
+            folder.rmdir()
+            removed.append(f"content/authors/{folder.name}/")
+    if removed:
+        print("Removed, no longer in data/team.yaml:")
+        for name in removed:
+            print(f"  {name}")
         print()
 
     print(f"Done. {len(people)} people written to data/authors/,")

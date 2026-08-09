@@ -12,6 +12,13 @@
 # FIELDS
 #   slug    : folder name, lowercase, no spaces (becomes /author/<slug>/)
 #   name    : display name, exactly as it should appear on the site
+#   family  : OPTIONAL. The surname on its own, for sorting. Only needed when
+#             the surname is not simply "everything after the first word" --
+#             i.e. for middle names, initials, and compound surnames.
+#             "Harald G. L. Schwefel" needs  family: Schwefel
+#             "Luis Enrique García Muñoz" needs  family: García Muñoz
+#             "Mallika Suresh" does not need it.
+#   given   : OPTIONAL. Only needed if the first word is not the given name.
 #   role    : job title / position
 #   org     : institution
 #   orcid   : ORCID iD, digits only with dashes, or leave blank
@@ -30,6 +37,7 @@ people:
 
   - slug: harald-schwefel
     name: Harald G. L. Schwefel
+    family: Schwefel
     role: Programme Leader / Principal Investigator
     org: University of Otago
     orcid: 0000-0002-4304-6469
@@ -50,7 +58,7 @@ people:
 
   - slug: mallika-suresh
     name: Mallika Suresh
-    role: Co-Lead, Photonics
+    role: Lead, Photonics
     org: University of Otago
     orcid: 0000-0002-9126-783X
     email: ''
@@ -60,6 +68,7 @@ people:
 
   - slug: randy-pollock
     name: H. Randy Pollock
+    family: Pollock
     role: Lead, Space Systems Engineering
     org: Paihau–Robinson Research Institute, Victoria University of Wellington
     orcid: 0000-0002-7206-3989
@@ -154,6 +163,7 @@ people:
 
   - slug: gabriel-santamaria-botello
     name: Gabriel Santamaría Botello
+    family: Santamaría Botello
     role: Researcher — Numerical Modelling
     org: Colorado School of Mines
     orcid: 0000-0003-4736-0030
@@ -174,6 +184,7 @@ people:
 
   - slug: luis-enrique-garcia-munoz
     name: Luis Enrique García Muñoz
+    family: García Muñoz
     role: Expert — THz Receiver Modelling
     org: Universidad Carlos III de Madrid
     orcid: 0000-0002-3619-7859
@@ -236,6 +247,7 @@ people:
 
   - slug: hans-philipp-sueltrop
     name: Hans Philipp Sültrop
+    family: Sültrop
     role: Key Individual — Stratospheric Platforms
     org: Kea Aerospace
     orcid: 0000-0002-6063-8984
