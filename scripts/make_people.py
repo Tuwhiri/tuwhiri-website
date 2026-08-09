@@ -132,6 +132,20 @@ def main():
         stub_dir = PAGES / person["slug"]
         stub_dir.mkdir(parents=True, exist_ok=True)
         stub = stub_dir / "_index.md"
+
+        # An existing stub may predate the render setting, in which case the
+        # profile page silently stops being built. Repair it rather than
+        # leaving it: add the build block, keep everything else.
+        if stub.exists() and "render: always" not in stub.read_text(encoding="utf-8"):
+            existing = stub.read_text(encoding="utf-8")
+            if existing.startswith("---"):
+                _, front, rest = existing.split("---", 2)
+                stub.write_text(
+                    "---" + front.rstrip("\n") +
+                    "\nbuild:\n  render: always\n  list: always\n---" + rest,
+                    encoding="utf-8")
+                print(f"  repaired content/authors/{person['slug']}/_index.md")
+
         if not stub.exists():
             stub.write_text(
                 "---\n"

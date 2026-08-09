@@ -129,12 +129,17 @@ sections:
   # Image paths are relative to assets/media/, so `partners/otago.svg` means
   # assets/media/partners/otago.svg. See assets/media/partners/README.md for
   # what to obtain and how to name it.
+  #
+  # THE KEY MUST BE `items:`, NOT `logos:`. The block's own documentation says
+  # `logos:`, and the names do appear either way -- but the image paths are
+  # only resolved for `items:`, so with `logos:` you get a row of captions and
+  # no pictures. This cost an afternoon; do not "correct" it back.
   # ====
   - block: logos
     id: partners
     content:
       title: Affiliated partners
-      logos:
+      items:
         - name: University of Otago
           image: partners/otago.svg
           url: https://www.otago.ac.nz
@@ -152,12 +157,14 @@ sections:
           url: https://www.wgtn.ac.nz/robinson
           description: Space systems engineering, Victoria University of Wellington
     design:
-      display_mode: grid
+      layout: grid
+      logo_style: color   # `grayscale` is the default; see note below
+      logo_size: lg
 
   - block: logos
     content:
       title: Industry partners
-      logos:
+      items:
         - name: Kea Aerospace
           image: partners/kea-aerospace.svg
           url: https://www.keaaerospace.com
@@ -175,7 +182,9 @@ sections:
           url: ''
           description: Industry partner
     design:
-      display_mode: grid
+      layout: grid
+      logo_style: color
+      logo_size: lg
 
   - block: cta-card
     content:

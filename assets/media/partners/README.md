@@ -38,6 +38,18 @@ until you hover over them; that has been turned off, because most institutions
 require their mark shown in approved colours, and Otago's brand rules say so
 explicitly.
 
+## If a logo does not appear
+
+Two causes, in order of likelihood:
+
+1. **The filename does not match.** Compare it letter for letter with the table
+   above. `Otago.svg`, `otago.SVG` and `otago-logo.svg` all fail silently — the
+   page emits a broken image rather than an error, and the build still passes.
+
+2. **The key in `content/_index.md` was changed from `items:` to `logos:`.**
+   The block's own documentation says `logos:`, and the names still appear, but
+   image paths are only resolved under `items:`. Leave it as `items:`.
+
 ## Two things to sort out before the site goes public
 
 **Permission.** Displaying an organisation's logo generally needs their
