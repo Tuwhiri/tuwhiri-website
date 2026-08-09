@@ -146,14 +146,14 @@ sections:
           description: Host institution
         - name: Dodd-Walls Centre
           image: partners/dodd-walls.svg
-          url: https://doddwalls.ac.nz
+          url: https://www.doddwalls.ac.nz
           description: Centre of Research Excellence for Photonic and Quantum Technologies
         - name: University of Waikato
           image: partners/waikato.svg
           url: https://www.waikato.ac.nz
           description: Atmospheric science
         - name: Paihau–Robinson Research Institute
-          image: partners/paihau-robinson.svg
+          image: partners/victoria.svg
           url: https://www.wgtn.ac.nz/robinson
           description: Space systems engineering, Victoria University of Wellington
     design:
@@ -170,7 +170,7 @@ sections:
           url: https://www.keaaerospace.com
           description: Stratospheric flight platforms
         - name: Quantifi Photonics
-          image: partners/quantifi.png
+          image: partners/quantifi.svg
           url: https://quantifiphotonics.com
           description: Instrument commercialisation
         - name: Shamrock Industries
@@ -178,7 +178,7 @@ sections:
           url: ''
           description: Manufacture and deployment
         - name: Q-Bifrost
-          image: partners/q-bifrost.svg
+          image: partners/Q-Bifrost_Logo.svg
           url: ''
           description: Industry partner
     design:
