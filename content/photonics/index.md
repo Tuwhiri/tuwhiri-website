@@ -7,7 +7,9 @@ sections:
   - block: markdown
     content:
       title: Photonics
+      subtitle: led by Mallika
       text: |-
+        ##### This area is led by Mallika Suresh.
         The core of the instrument is an electro-optic up-converter. A
         whispering-gallery-mode resonator, diamond-turned from a nonlinear
         crystal, couples an incoming microwave or terahertz photon to an optical
@@ -20,7 +22,7 @@ sections:
         temperature optimisation, and the engineering of a device that survives
         launch and operates unattended in the stratosphere.
 
-        This area is led by Harald Schwefel and Mallika Suresh.
+        
     design:
       columns: '1'
 

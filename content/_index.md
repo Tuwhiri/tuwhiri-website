@@ -20,6 +20,8 @@ sections:
         dark_src: hero-logo-dark.svg
         alt: Tuwhiri
     design:
+      size: "compact"
+      css_style: "padding: 10px 0;"
       layout: stacked
       background:
         gradient_mesh:
@@ -27,18 +29,12 @@ sections:
 
   - block: markdown
     content:
+      title: Building critical capability for space-based climate monitoring with
+        next generation photonics.
+      subtitle: An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
       text: |-
-        **Building critical capability for space-based climate monitoring with
-        next generation photonics.**
-
-        An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
-    design:
-      columns: '1'
-
-  - block: markdown
-    content:
-      title: We are losing key data on the atmosphere
-      text: |-
+        ##### An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
+       
         The 25-year record of atmospheric composition from NASA's EOS-Aura
         satellite ends when the spacecraft runs out of fuel. Aura's Microwave
         Limb Sounder is the only instrument that can measure ozone and related
@@ -53,6 +49,11 @@ sections:
         atmospheric science, photonics and space engineering capability that
         Aotearoa New Zealand needs to keep that record going.
     design:
+      text_color_light: true
+      background:
+        image:
+          filename: Ozone.png
+          filters: false
       columns: '1'
 
   - block: research-areas
@@ -100,6 +101,10 @@ sections:
         [Read more about outreach and engagement →](/outreach/)
     design:
       columns: '1'
+      background:
+        gradient_mesh:
+          enable: true
+
 
   - block: collection
     id: news
@@ -110,6 +115,7 @@ sections:
       order: desc
     design:
       view: card
+      
 
   - block: collection
     id: papers
@@ -121,6 +127,7 @@ sections:
           - publications
     design:
       view: citation
+      
 
   # ====
   # Partner logos, in two groups. The logos block has no built-in grouping,
@@ -157,10 +164,15 @@ sections:
           url: https://www.wgtn.ac.nz/robinson
           description: Space systems engineering, Victoria University of Wellington
     design:
+      size: "compact"
       layout: grid
       logo_style: color   # `grayscale` is the default; see note below
       logo_size: lg
-
+      css_style: "padding: 10px 0;"
+      background:
+        gradient:
+          type: linear
+  
   - block: logos
     content:
       title: Industry partners
@@ -182,9 +194,16 @@ sections:
           url: ''
           description: Industry partner
     design:
+      size: "compact"
       layout: grid
       logo_style: color
       logo_size: lg
+      css_style: "padding: 10px 0;"
+      background:
+        gradient_mesh:
+          type: linear
+          enable: true
+    
 
   - block: cta-card
     content:

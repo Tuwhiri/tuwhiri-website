@@ -8,6 +8,7 @@ sections:
     content:
       title: Atmospheric Science
       text: |-
+        ##### This area is led by Annika Seppälä.
         Ozone in the Antarctic stratosphere shapes the jet streams that steer
         weather across Australasia. We are quantifying how much forecast skill
         New Zealand stands to lose when the Aura record ends, and using that to
@@ -20,7 +21,6 @@ sections:
         transfer model, and identifying which further gases the same technique
         could measure.
 
-        This area is led by Annika Seppälä.
     design:
       columns: '1'
 

@@ -83,7 +83,7 @@
 .logos-block-container a,
 .logos-block-container [role="img"] {
   width: auto !important;
-  min-width: 18rem;
+  min-width: 8rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }

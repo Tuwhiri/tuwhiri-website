@@ -8,6 +8,7 @@ sections:
     content:
       title: Space Systems Engineering
       text: |-
+        ##### This area is led by Randy Pollock.
         Turning a laboratory instrument into a flight payload means solving the
         problems that surround the sensor: mass, power and volume budgets,
         vibration isolation, thermal control, pointing knowledge, and data
@@ -21,7 +22,6 @@ sections:
         The payload will be demonstrated on balloon flights from Lauder and
         Antarctica, and on a Kea Aerospace Kea Atmos Mk2 stratospheric aircraft.
 
-        This area is led by Randy Pollock.
     design:
       columns: '1'
 
