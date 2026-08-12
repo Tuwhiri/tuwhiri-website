@@ -20,7 +20,13 @@
 #             "Mallika Suresh" does not need it.
 #   given   : OPTIONAL. Only needed if the first word is not the given name.
 #   role    : job title / position
-#   org     : institution
+#   org     : institution.
+#             For members outside New Zealand, append the country -- and for
+#             the United States, the state as well:
+#               Caltech, California, USA
+#               University of Adelaide, Australia
+#             New Zealand organisations carry no country, since the whole
+#             programme is based here and it would be noise on every entry.
 #   orcid   : ORCID iD, digits only with dashes, or leave blank
 #   email   : leave blank unless the person has agreed to it being public
 #   area    : ONE of  atmospheric-science | photonics | engineering | ''
@@ -92,7 +98,7 @@ people:
   - slug: richard-querel
     name: Richard Querel
     role: Key Researcher — Calibration & Validation
-    org: New Zealand Institute for Earth Science
+    org: Earth Sciences New Zealand
     orcid: 0000-0001-8792-2486
     email: ''
     area: atmospheric-science
@@ -112,7 +118,7 @@ people:
   - slug: peter-gibson
     name: Peter Gibson
     role: Expert — Model Simulation Design
-    org: New Zealand Institute for Earth Science
+    org: Earth Sciences New Zealand
     orcid: 0000-0003-2095-5165
     email: ''
     area: atmospheric-science
@@ -144,7 +150,7 @@ people:
   - slug: andrey-matsko
     name: Andrey Matsko
     role: Expert — Radiometer Design
-    org: Jet Propulsion Laboratory, NASA
+    org: Caltech, California, USA
     orcid: 0000-0001-9939-9311
     email: ''
     area: photonics
@@ -165,7 +171,7 @@ people:
     name: Gabriel Santamaría Botello
     family: Santamaría Botello
     role: Researcher — Numerical Modelling
-    org: Colorado School of Mines
+    org: Colorado School of Mines, Colorado, USA
     orcid: 0000-0003-4736-0030
     email: ''
     area: photonics
@@ -175,7 +181,7 @@ people:
   - slug: withawat-withayachumnankul
     name: Withawat Withayachumnankul
     role: Researcher — THz Antennas
-    org: University of Adelaide
+    org: University of Adelaide, Australia
     orcid: 0000-0003-1155-567X
     email: ''
     area: photonics
@@ -186,7 +192,7 @@ people:
     name: Luis Enrique García Muñoz
     family: García Muñoz
     role: Expert — THz Receiver Modelling
-    org: Universidad Carlos III de Madrid
+    org: Universidad Carlos III de Madrid, Spain
     orcid: 0000-0002-3619-7859
     email: ''
     area: photonics
@@ -208,7 +214,7 @@ people:
   - slug: john-cater
     name: John Cater
     role: Expert — Aerospace Materials & Engineering
-    org: University of Canterbury
+    org: Auckland University of Technology
     orcid: 0000-0002-3233-4000
     email: ''
     area: engineering
@@ -218,7 +224,7 @@ people:
   - slug: betina-pavri
     name: Betina Pavri
     role: Researcher — Payload Systems
-    org: Paihau–Robinson Research Institute
+    org: Paihau–Robinson Research Institute, Victoria University of Wellington
     orcid: 0000-0001-5133-7242
     email: ''
     area: engineering
@@ -238,7 +244,7 @@ people:
   - slug: tarik-errabih
     name: Tarik Errabih
     role: Expert — Space Engineering
-    org: University of New South Wales
+    org: University of New South Wales, Canberra, Australia
     orcid: ''
     email: ''
     area: engineering
@@ -291,7 +297,7 @@ people:
   - slug: jessa-barder
     name: Jessa Barder
     role: Lead, Engagement & Outreach
-    org: Otago Museum
+    org: University of Otago
     orcid: 0000-0002-0477-2898
     email: ''
     area: ''
@@ -333,7 +339,7 @@ people:
   - slug: nathaniel-livesey
     name: Nathaniel Livesey
     role: Advisor — Aura MLS Principal Investigator
-    org: Jet Propulsion Laboratory, NASA
+    org: NASA Jet Propulsion Laboratory, California, USA
     orcid: 0000-0001-8753-9153
     email: ''
     area: atmospheric-science
@@ -343,7 +349,7 @@ people:
   - slug: bernd-funke
     name: Bernd Funke
     role: Advisor — CMIP / APARC
-    org: Instituto de Astrofísica de Andalucía (CSIC)
+    org: Instituto de Astrofísica de Andalucía (CSIC), Spain
     orcid: 0000-0003-0462-4702
     email: ''
     area: atmospheric-science
@@ -353,7 +359,7 @@ people:
   - slug: johanna-tamminen
     name: Johanna Tamminen
     role: Advisor — Earth Observation & End Users
-    org: Finnish Meteorological Institute
+    org: Finnish Meteorological Institute, Finland
     orcid: 0000-0003-3095-0069
     email: ''
     area: atmospheric-science

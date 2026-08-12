@@ -14,6 +14,9 @@ What it does
    author surnames against data/team.yaml. A paper by Suresh and Sedlmeir
    gets tagged `photonics`; a paper by Kessenich gets `atmospheric-science`.
    A paper with authors from two areas gets both tags.
+
+   Zotero's own keyword tags are deliberately not copied across. See
+   ALLOWED_ZOTERO_TAGS below if you ever want particular ones through.
 5. Deletes pages for items that have been removed from Zotero.
 
 Pages it did not create are never touched, so you can still hand-write a
@@ -40,6 +43,20 @@ except ImportError:
 GROUP_ID = "6627926"          # Tuwhiri Zotero group
 PAGE_SIZE = 100
 EXCLUDE_TAG = "no-website"    # add this tag in Zotero to hide an item
+
+# Zotero keyword tags are NOT copied to the website. A shared reference library
+# accumulates keywords from importers, publishers and personal habit -- "Q
+# factor", "Whispering gallery modes", "Terahertz detectors" -- with no shared
+# capitalisation or vocabulary. Mixing those into the site's tag list makes the
+# tag index a jumble and buries the four tags that actually do work:
+# atmospheric-science, photonics, engineering and outreach.
+#
+# Website tags are therefore derived from the AUTHORS alone, via data/team.yaml.
+#
+# To let specific Zotero keywords through, list them here, exactly as spelled in
+# Zotero. Anything not listed is ignored. Example:
+#     ALLOWED_ZOTERO_TAGS = {"ozone", "cubesat"}
+ALLOWED_ZOTERO_TAGS = set()
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ROSTER = ROOT / "data" / "team.yaml"
@@ -223,7 +240,10 @@ def build_page(item, lookup):
     slug = "-".join(x for x in [slugify(first_last, 20), year,
                                 slugify(title, 40)] if x)
 
-    tags = sorted(set(areas)) + sorted(t for t in ztags if t != EXCLUDE_TAG)
+    # Research area tags come from the author matching above. Zotero keywords
+    # are dropped unless explicitly allowed -- see ALLOWED_ZOTERO_TAGS.
+    tags = sorted(set(areas)) + sorted(
+        t for t in ztags if t != EXCLUDE_TAG and t in ALLOWED_ZOTERO_TAGS)
 
     fm = {
         "title": title,
