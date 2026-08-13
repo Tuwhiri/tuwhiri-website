@@ -144,7 +144,15 @@
 
 <script>
 (function () {
-  var root = document.getElementById({{ $id | jsonify }});
+  // Find our own container without needing the id threaded through the
+  // template. `currentScript` is the <script> element being executed, so its
+  // previous sibling is the block we just rendered. This also means two of
+  // these blocks on one page cannot interfere with each other.
+  var script = document.currentScript;
+  var root = script && script.previousElementSibling;
+  if (!root || !root.hasAttribute('data-pubfilter')) {
+    root = document.querySelector('[data-pubfilter]');
+  }
   if (!root) return;
 
   var search = root.querySelector('[data-pubfilter-search]');
@@ -173,6 +181,8 @@
                (!y || el.dataset.year === y) &&
                (!q || el.dataset.fold.indexOf(q) !== -1);
       el.hidden = !ok;
+      el.style.display = ok ? '' : 'none';   // `hidden` alone loses to any
+                                             // stylesheet that sets display
       if (ok) shown++;
     });
 
