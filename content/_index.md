@@ -112,7 +112,7 @@ sections:
       count: 2
       order: desc
     design:
-      view: showcase
+      view: masonry
       
 
   - block: collection
