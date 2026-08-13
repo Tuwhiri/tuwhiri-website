@@ -11,5 +11,9 @@ sections:
           - blog
       order: desc
     design:
-      view: card
+      view: article-grid
+  # ====
+  # View Options
+  # card, citation, date-title-summary, article-grid, slides-gallery
+  # ====
 ---

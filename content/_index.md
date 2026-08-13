@@ -109,11 +109,18 @@ sections:
     content:
       title: Latest news
       page_type: blog
-      count: 2
+      count: 3
       order: desc
+      filters:
+        folders:
+          - blog
     design:
-      view: masonry
-      
+      view: date-title-summary
+  # ====
+  # View Options
+  # card, citation, date-title-summary, article-grid, slides-gallery
+  # ====
+     
 
   - block: collection
     id: papers
