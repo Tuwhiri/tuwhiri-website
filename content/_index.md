@@ -51,9 +51,7 @@ sections:
     design:
       text_color_light: true
       background:
-        image:
-          filename: Ozone.png
-          filters: false
+        gradient_mesh:
       columns: '1'
 
   - block: research-areas
@@ -111,10 +109,10 @@ sections:
     content:
       title: Latest news
       page_type: blog
-      count: 4
+      count: 2
       order: desc
     design:
-      view: card
+      view: showcase
       
 
   - block: collection
@@ -178,7 +176,7 @@ sections:
       title: Industry partners
       items:
         - name: Kea Aerospace
-          image: partners/kea-aerospace.png
+          image: partners/kea-aerospace.svg
           url: https://www.keaaerospace.com
           description: Stratospheric flight platforms
         - name: Quantifi Photonics
