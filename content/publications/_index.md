@@ -1,15 +1,16 @@
 ---
 title: Publications
 type: landing
+
 sections:
-  - block: collection
+  # `publication-filter` is a Tuwhiri block, defined in
+  # layouts/_partials/hbx/blocks/publication-filter/block.html
+  # It restores the search and filter controls the previous theme had.
+  - block: publication-filter
     content:
       title: Publications
-      count: 0
-      filters:
-        folders:
-          - publications
-      order: desc
-    design:
-      view: citation
+      text: |-
+        Work from the Tuwhiri programme and its collaborators. The list is
+        maintained in the programme's Zotero group and updates automatically.
+      folder: publications
 ---

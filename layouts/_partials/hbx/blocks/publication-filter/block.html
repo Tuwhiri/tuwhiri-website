@@ -1,0 +1,190 @@
+{{/* =============================================================================
+     PUBLICATION FILTER — a Tuwhiri block, not a theme file
+
+     Restores the search box, type filter and year filter that the previous
+     theme had on its publications page. The current theme dropped its
+     dedicated `layouts/section/publication.html`, which carried that UI.
+
+     THIS DOES NOT OVERRIDE ANYTHING. Blocks are looked up at
+     `_partials/hbx/blocks/<id>/block.html`, and the theme has no block called
+     `publication-filter`, so this simply adds one. Nothing upstream is
+     shadowed, and a theme upgrade cannot silently replace it.
+
+     USE IT like any other block:
+
+       - block: publication-filter
+         content:
+           title: Publications
+           folder: publications
+
+     HOW IT WORKS
+     Hugo renders every publication at build time, each carrying data-
+     attributes for year, type, and searchable text. A small script hides and
+     shows them. There is no request to the server and no dependency: with
+     JavaScript disabled the full list still renders, just without the
+     controls.
+     ============================================================================= */}}
+
+{{ $block := .block }}
+{{ $page := .page }}
+{{ $content := $block.content | default dict }}
+
+{{ $title := index $content "title" }}
+{{ $text := index $content "text" }}
+{{ $folder := index $content "folder" | default "publications" }}
+{{ $id := printf "pubfilter-%d" (now.UnixNano) }}
+
+{{/* Newest first. Publications carry `date`; fall back to the file date. */}}
+{{ $items := where site.RegularPages "Section" $folder }}
+{{ $items = sort $items "Date" "desc" }}
+
+{{/* Collect the years and types actually present, so the dropdowns only
+     ever offer options that return something. */}}
+{{ $years := slice }}
+{{ $types := slice }}
+{{ range $items }}
+  {{ $y := .Date.Format "2006" }}
+  {{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}
+  {{ with .Params.publication_types }}
+    {{ $t := index . 0 }}
+    {{ if and $t (not (in $types $t)) }}{{ $types = $types | append $t }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $years = sort $years "" "desc" }}
+{{ $types = sort $types }}
+
+{{/* Human-readable names for the CSL type codes. */}}
+{{ $type_labels := dict
+  "article-journal" "Journal article"
+  "paper-conference" "Conference paper"
+  "paper" "Preprint"
+  "report" "Report"
+  "book" "Book"
+  "chapter" "Book chapter"
+  "thesis" "Thesis"
+  "patent" "Patent"
+  "manuscript" "Other"
+}}
+
+<div class="mx-auto max-w-4xl px-4 py-8" id="{{ $id }}" data-pubfilter>
+
+  {{ with $title }}
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
+      {{ . | markdownify }}
+    </h2>
+  {{ end }}
+  {{ with $text }}
+    <div class="prose dark:prose-invert max-w-none mb-6">{{ . | markdownify }}</div>
+  {{ end }}
+
+  {{/* ---- The controls ------------------------------------------------- */}}
+  <div class="grid gap-3 sm:grid-cols-3 mb-6">
+    <div class="sm:col-span-1">
+      <label class="sr-only" for="{{ $id }}-search">Search publications</label>
+      <input type="search" id="{{ $id }}-search" data-pubfilter-search
+        placeholder="Search title or author…" autocapitalize="off" autocomplete="off"
+        class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:border-primary-500 focus:ring-1 focus:ring-primary-500" />
+    </div>
+
+    <div class="sm:col-span-1">
+      <label class="sr-only" for="{{ $id }}-type">Filter by type</label>
+      <select id="{{ $id }}-type" data-pubfilter-type
+        class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100">
+        <option value="">All types</option>
+        {{ range $types }}
+          <option value="{{ . }}">{{ index $type_labels . | default . }}</option>
+        {{ end }}
+      </select>
+    </div>
+
+    <div class="sm:col-span-1">
+      <label class="sr-only" for="{{ $id }}-year">Filter by year</label>
+      <select id="{{ $id }}-year" data-pubfilter-year
+        class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100">
+        <option value="">All years</option>
+        {{ range $years }}<option value="{{ . }}">{{ . }}</option>{{ end }}
+      </select>
+    </div>
+  </div>
+
+  <p class="text-sm text-gray-500 dark:text-gray-400 mb-4" data-pubfilter-count
+     aria-live="polite">{{ len $items }} publications</p>
+
+  {{/* ---- The list ------------------------------------------------------ */}}
+  <div data-pubfilter-list>
+    {{ range $items }}
+      {{ $type := "" }}
+      {{ with .Params.publication_types }}{{ $type = index . 0 }}{{ end }}
+
+      {{/* Everything searchable, flattened into one lowercase string:
+           title, every author's display name, and the venue. */}}
+      {{ $haystack := slice .Title }}
+      {{ range .Params.authors }}
+        {{ $prof := partial "functions/get_author_profile" (dict "slug" (. | urlize) "title" .) }}
+        {{ $haystack = $haystack | append ($prof.title | default .) }}
+      {{ end }}
+      {{ with .Params.publication }}
+        {{ if reflect.IsMap . }}{{ with index . "name" }}{{ $haystack = $haystack | append . }}{{ end }}
+        {{ else }}{{ $haystack = $haystack | append . }}{{ end }}
+      {{ end }}
+
+      <article data-pubfilter-item
+               data-year="{{ .Date.Format "2006" }}"
+               data-type="{{ $type }}"
+               data-text="{{ lower (delimit $haystack " ") }}">
+        {{ partial "views/citation" (dict "item" . "page" $page) }}
+      </article>
+    {{ end }}
+  </div>
+
+  <p class="hidden text-gray-500 dark:text-gray-400 py-6" data-pubfilter-empty>
+    No publications match those filters.
+  </p>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById({{ $id | jsonify }});
+  if (!root) return;
+
+  var search = root.querySelector('[data-pubfilter-search]');
+  var type   = root.querySelector('[data-pubfilter-type]');
+  var year   = root.querySelector('[data-pubfilter-year]');
+  var items  = Array.prototype.slice.call(root.querySelectorAll('[data-pubfilter-item]'));
+
+  // Strip accents so that typing "Seppala" finds "Seppälä", and "Kjaergaard"
+  // finds "Kjærgaard". Applied to both the stored text and the query.
+  function fold(s) {
+    s = String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return s.replace(/ø/g, 'o').replace(/æ/g, 'ae').replace(/ß/g, 'ss');
+  }
+  items.forEach(function (el) { el.dataset.fold = fold(el.dataset.text); });
+  var count  = root.querySelector('[data-pubfilter-count]');
+  var empty  = root.querySelector('[data-pubfilter-empty]');
+
+  function apply() {
+    var q = fold((search.value || '').trim().toLowerCase());
+    var t = type.value;
+    var y = year.value;
+    var shown = 0;
+
+    items.forEach(function (el) {
+      var ok = (!t || el.dataset.type === t) &&
+               (!y || el.dataset.year === y) &&
+               (!q || el.dataset.fold.indexOf(q) !== -1);
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+
+    count.textContent = shown === items.length
+      ? items.length + ' publications'
+      : shown + ' of ' + items.length + ' publications';
+    empty.classList.toggle('hidden', shown !== 0);
+  }
+
+  [search, type, year].forEach(function (el) {
+    el.addEventListener('input', apply);
+    el.addEventListener('change', apply);
+  });
+})();
+</script>

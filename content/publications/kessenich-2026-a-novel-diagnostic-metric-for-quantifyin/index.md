@@ -9,10 +9,11 @@ authors:
 date: '2026-03-14'
 publishDate: '2026-03-14'
 publication_types:
-- report
+- paper-conference
 publication:
-  name: Copernicus Meetings
-peer_reviewed: false
+  name: European Geosciences Union (EGU) Assembly
+peer_reviewed: true
+abstract: For the next several decades, the Antarctic ozone hole will remain an annual phenomenon. As concentrations of stratospheric chlorine gradually decrease, so will the severity of ozone depletion within the ozone hole. Chemical influences on the ozone hole are relatively well-understood and readily modelled. However, the dynamical state of the polar stratosphere is considerably more challenging to evaluate. Dynamical conditions exert a strong influence on the springtime progression of the ozone hole, affecting the strength and structure of the polar vortex, transport of ozone, and temperatures across the polar cap. In this work, we share a new diagnostic metric, the Mesospheric Parcel Altitude (MPA), which traces the descent of mesospheric air into the springtime polar vortex. The MPA captures the dynamical state of the vortex interior and serves as a directly observable proxy for horizontal ozone transport. With this novel metric, we can more accurately attribute the chemical and dynamical drivers of uniquely long/short-lived ozone holes.
 tags:
 - atmospheric-science
 featured: false

@@ -11,8 +11,7 @@ featured: false
 ---
 
 Programme Lead Harald Schwefel spent part of November 2025 in Antarctica,
-working alongside Professor Inga Smith of the University of Otago on her sea ice
-research.
+working alongside [Professor Inga Smith](https://www.physics.otago.ac.nz/nx/ice/sea-ice-home-2.html) of the University of Otago on her sea ice research.
 
 The scientific contribution was one reason for going. The other was
 reconnaissance. Tuwhiri intends to fly its radiometer on balloons from
@@ -25,3 +24,4 @@ decisions must be made, what support exists on the ice, and where things
 typically go wrong — is the sort of knowledge that does not transfer from
 reading about it. Bringing it back into the engineering team's planning is
 worth more than the time it cost.
+
