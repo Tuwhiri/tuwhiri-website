@@ -32,6 +32,9 @@
 #   area    : ONE of  atmospheric-science | photonics | engineering | ''
 #             This is what tags their publications. Blank = no auto-tagging.
 #   groups  : which headings they appear under on the People page.
+#             Advisory board members are listed under their board only, not
+#             also under the research area team. The area pages show both
+#             headings, so they still appear there.
 #             Must match the list in content/people/index.md exactly.
 #   match   : surname spellings used to recognise them in Zotero author lists.
 #             Include accented AND unaccented forms. Case-insensitive.
@@ -122,7 +125,7 @@ people:
     orcid: 0000-0003-2095-5165
     email: ''
     area: atmospheric-science
-    groups: [Atmospheric Science]
+    groups: [Atmospheric Advisory Board]
     match: [Gibson]
 
   # --- Photonics ------------------------------------------------------------
@@ -154,7 +157,7 @@ people:
     orcid: 0000-0001-9939-9311
     email: ''
     area: photonics
-    groups: [Photonics]
+    groups: [Photonics Advisory Board]
     match: [Matsko]
 
   - slug: dmitry-strekalov
@@ -164,7 +167,7 @@ people:
     orcid: 0000-0001-6058-7390
     email: ''
     area: photonics
-    groups: [Photonics]
+    groups: [Photonics Advisory Board]
     match: [Strekalov]
 
   - slug: gabriel-santamaria-botello
@@ -196,7 +199,7 @@ people:
     orcid: 0000-0002-3619-7859
     email: ''
     area: photonics
-    groups: [Photonics]
+    groups: [Photonics Advisory Board]
     match: [García Muñoz, Garcia Munoz, Muñoz, Munoz, García-Muñoz]
 
   # --- Space Systems Engineering -------------------------------------------
@@ -208,7 +211,7 @@ people:
     orcid: 0000-0001-5069-319X
     email: ''
     area: engineering
-    groups: [Space Systems Engineering]
+    groups: [Engineering Advisory Board]
     match: [Rattenbury]
 
   - slug: john-cater
@@ -218,7 +221,7 @@ people:
     orcid: 0000-0002-3233-4000
     email: ''
     area: engineering
-    groups: [Space Systems Engineering]
+    groups: [Engineering Advisory Board]
     match: [Cater]
 
   - slug: betina-pavri
@@ -248,7 +251,7 @@ people:
     orcid: ''
     email: ''
     area: engineering
-    groups: [Space Systems Engineering]
+    groups: [Engineering Advisory Board]
     match: [Errabih]
 
   - slug: hans-philipp-sueltrop
@@ -343,7 +346,7 @@ people:
     orcid: 0000-0001-8753-9153
     email: ''
     area: atmospheric-science
-    groups: [Advisory Board]
+    groups: [Atmospheric Advisory Board]
     match: [Livesey]
 
   - slug: bernd-funke
@@ -353,7 +356,7 @@ people:
     orcid: 0000-0003-0462-4702
     email: ''
     area: atmospheric-science
-    groups: [Advisory Board]
+    groups: [Atmospheric Advisory Board]
     match: [Funke]
 
   - slug: johanna-tamminen
@@ -363,7 +366,7 @@ people:
     orcid: 0000-0003-3095-0069
     email: ''
     area: atmospheric-science
-    groups: [Advisory Board]
+    groups: [Atmospheric Advisory Board]
     match: [Tamminen]
 
   - slug: greg-bodeker
@@ -373,7 +376,7 @@ people:
     orcid: 0000-0003-1094-5852
     email: ''
     area: atmospheric-science
-    groups: [Advisory Board]
+    groups: [Atmospheric Advisory Board]
     match: [Bodeker]
 
   # --- Students -------------------------------------------------------------

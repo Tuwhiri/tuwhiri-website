@@ -29,6 +29,7 @@ sections:
       title: Who works on this
       user_groups:
         - Atmospheric Science
+        - Atmospheric Advisory Board
       sort_by: name_family
       sort_ascending: true
     design:

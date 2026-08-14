@@ -19,7 +19,9 @@ sections:
         - Photonics
         - Space Systems Engineering
         - Engagement & Outreach
-        - Advisory Board
+        - Atmospheric Advisory Board
+        - Photonics Advisory Board
+        - Engineering Advisory Board
         - Students
         - Alumni
       sort_by: name_family
