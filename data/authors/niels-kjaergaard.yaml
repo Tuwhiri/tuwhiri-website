@@ -8,7 +8,10 @@ role: Researcher — Rydberg Sensing
 bio: ''
 affiliations:
 - name: University of Otago
-links: []
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/niels-kjaergaard-a074a52/
+  label: LinkedIn
 user_groups:
 - Photonics
 research_area: photonics

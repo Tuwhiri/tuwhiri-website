@@ -13,6 +13,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0002-7206-3989
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/randy-pollock/
+  label: LinkedIn
 user_groups:
 - Programme Leadership
 - Space Systems Engineering

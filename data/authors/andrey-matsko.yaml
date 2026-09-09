@@ -12,6 +12,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0001-9939-9311
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/andrey-matsko-69a02415/
+  label: LinkedIn
 user_groups:
 - Photonics Advisory Board
 research_area: photonics

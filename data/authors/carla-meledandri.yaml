@@ -15,6 +15,9 @@ bio: Carla Meledandri brings the perspective of both a researcher and a programm
   that addresses complex scientific and societal challenges.
 affiliations:
 - name: University of Otago
-links: []
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/carla-meledandri-9720669/
+  label: LinkedIn
 user_groups:
 - Programme Leadership

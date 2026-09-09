@@ -12,6 +12,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0001-5069-319X
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/nicholasrattenbury/
+  label: LinkedIn
 user_groups:
 - Engineering Advisory Board
 research_area: engineering

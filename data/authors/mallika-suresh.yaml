@@ -26,6 +26,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0002-9126-783X
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/mallika-irene-suresh-71923419b/
+  label: LinkedIn
 user_groups:
 - Programme Leadership
 - Photonics

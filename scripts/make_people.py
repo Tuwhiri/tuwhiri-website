@@ -88,6 +88,22 @@ def build(person):
                       "url": "https://orcid.org/" + person["orcid"],
                       "label": "ORCID"})
 
+    # Optional profile links. Each is a plain field in data/team.yaml, so it
+    # survives the next run of this script -- anything added by hand to
+    # data/authors/<slug>.yaml is overwritten, because `links` is rebuilt here.
+    for field, icon, label in (
+        ("linkedin",   "brands/linkedin",           "LinkedIn"),
+        ("scholar",    "academicons/google-scholar", "Google Scholar"),
+        ("researchgate", "academicons/researchgate", "ResearchGate"),
+        ("github",     "brands/github",             "GitHub"),
+        ("website",    "hero/globe-alt",            "Website"),
+    ):
+        value = (person.get(field) or "").strip()
+        if not value:
+            continue
+        url = value if value.startswith(("http://", "https://")) else "https://" + value
+        links.append({"icon": icon, "url": url, "label": label})
+
     profile = {
         "schema": "hugoblox/author/v1",
         "slug": person["slug"],

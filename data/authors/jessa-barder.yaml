@@ -18,5 +18,8 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0002-0477-2898
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/jessabarder/
+  label: LinkedIn
 user_groups:
 - Engagement & Outreach

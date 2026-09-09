@@ -8,7 +8,10 @@ role: Researcher — Extreme Events
 bio: ''
 affiliations:
 - name: University of Waikato
-links: []
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/hamish-lewis-ba712b167/
+  label: LinkedIn
 user_groups:
 - Atmospheric Science
 research_area: atmospheric-science

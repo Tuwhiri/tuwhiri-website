@@ -8,7 +8,10 @@ role: Expert — Resonator Physics
 bio: ''
 affiliations:
 - name: University of Otago
-links: []
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/florian-sedlmeir-2b27ba34/
+  label: LinkedIn
 user_groups:
 - Photonics
 research_area: photonics

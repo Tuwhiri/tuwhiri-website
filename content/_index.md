@@ -221,6 +221,13 @@ sections:
           - Dunedin 9054
           - New Zealand
       connect_title: For media and outreach
+      # Programme accounts only -- personal profiles go in data/team.yaml.
+      # Note: if `social` is left unset entirely, the theme falls back to the
+      # site owner's own author links, which is not what a programme wants.
+      social:
+        - icon: brands/linkedin
+          label: LinkedIn
+          url: https://www.linkedin.com/company/tuwhiri-programme/
       prospective:
         title: Students and prospective researchers
         text: Tuwhiri supports doctoral and masters students across atmospheric science, photonics and space systems engineering. Get in touch if you would like to work on this.

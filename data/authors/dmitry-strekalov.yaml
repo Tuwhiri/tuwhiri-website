@@ -12,6 +12,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0001-6058-7390
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/dmitry-strekalov-879aa2132/
+  label: LinkedIn
 user_groups:
 - Photonics Advisory Board
 research_area: photonics

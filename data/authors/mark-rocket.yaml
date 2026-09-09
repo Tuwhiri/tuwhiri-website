@@ -8,7 +8,10 @@ role: Key Individual
 bio: ''
 affiliations:
 - name: Kea Aerospace
-links: []
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/mark-rocket-8727353/
+  label: LinkedIn
 user_groups:
 - Space Systems Engineering
 research_area: engineering

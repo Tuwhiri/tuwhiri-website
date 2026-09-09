@@ -12,5 +12,8 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0002-9398-3696
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/simon-arnold-78418a28/
+  label: LinkedIn
 user_groups:
 - Engagement & Outreach

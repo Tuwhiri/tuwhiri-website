@@ -12,6 +12,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0003-1155-567X
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/withawat-withayachumnankul-61a342166/
+  label: LinkedIn
 user_groups:
 - Photonics
 research_area: photonics

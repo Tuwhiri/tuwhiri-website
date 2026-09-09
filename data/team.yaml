@@ -9,16 +9,12 @@
 # TO ADD A PERSON: copy a block, fill it in, save. Then either re-run
 # scripts/make_people.py, or just hand-create their content/authors/ folder.
 #
-# FIELDS
-#   slug    : folder name, lowercase, no spaces (becomes /author/<slug>/)
+# FIELDS -- required
+#   slug    : folder name, lowercase, no spaces (becomes /authors/<slug>/)
+#             Do NOT change a slug once set. Changing it makes the script treat
+#             the person as departed: their file is deleted and a new empty one
+#             created, and any biography written for them is lost.
 #   name    : display name, exactly as it should appear on the site
-#   family  : OPTIONAL. The surname on its own, for sorting. Only needed when
-#             the surname is not simply "everything after the first word" --
-#             i.e. for middle names, initials, and compound surnames.
-#             "Harald G. L. Schwefel" needs  family: Schwefel
-#             "Luis Enrique García Muñoz" needs  family: García Muñoz
-#             "Mallika Suresh" does not need it.
-#   given   : OPTIONAL. Only needed if the first word is not the given name.
 #   role    : job title / position
 #   org     : institution.
 #             For members outside New Zealand, append the country -- and for
@@ -27,17 +23,65 @@
 #               University of Adelaide, Australia
 #             New Zealand organisations carry no country, since the whole
 #             programme is based here and it would be noise on every entry.
-#   orcid   : ORCID iD, digits only with dashes, or leave blank
-#   email   : leave blank unless the person has agreed to it being public
-#   area    : ONE of  atmospheric-science | photonics | engineering | ''
-#             This is what tags their publications. Blank = no auto-tagging.
 #   groups  : which headings they appear under on the People page.
 #             Advisory board members are listed under their board only, not
 #             also under the research area team. The area pages show both
 #             headings, so they still appear there.
 #             Must match the list in content/people/index.md exactly.
+#
+# FIELDS -- names and publication matching
+#   family  : OPTIONAL. The surname on its own, for sorting. Only needed when
+#             the surname is not simply "everything after the first word" --
+#             i.e. for middle names, initials, and compound surnames.
+#               "Harald G. L. Schwefel"      needs  family: Schwefel
+#               "Luis Enrique Garcia Munoz"  needs  family: Garcia Munoz
+#               "Mallika Suresh"             does not need it.
+#   given   : OPTIONAL. Only needed if the first word is not the given name.
+#   area    : ONE of  atmospheric-science | photonics | engineering | ''
+#             This is what tags their publications. Blank = no auto-tagging.
 #   match   : surname spellings used to recognise them in Zotero author lists.
 #             Include accented AND unaccented forms. Case-insensitive.
+#
+# FIELDS -- profile links   (all optional; omit any and no icon appears)
+#   Each adds a small icon to the person's profile page and to the author card
+#   under any post they are credited on. Three or four sit comfortably there;
+#   a dozen would not.
+#
+#     email        leave blank unless the person has agreed to it being public
+#     orcid        ORCID iD, digits and dashes only, not a URL
+#     linkedin     LinkedIn profile URL
+#     scholar      Google Scholar profile URL
+#     researchgate ResearchGate profile URL
+#     github       GitHub profile URL
+#     website      personal or group website
+#
+#   A bare address works -- website: www.example.org becomes https://... --
+#   but a full URL is clearer. Example of a fully populated entry:
+#
+#     - slug: jane-smith
+#       name: Jane Smith
+#       role: Researcher
+#       org: University of Otago
+#       orcid: 0000-0001-2345-6789
+#       linkedin: https://www.linkedin.com/in/janesmith/
+#       website: https://janesmith.example.org
+#       area: photonics
+#       groups: [Photonics]
+#       match: [Smith]
+#
+#   These belong HERE, not in data/authors/<slug>.yaml. That file is generated,
+#   and scripts/make_people.py rebuilds its `links:` list from scratch on every
+#   run -- so a link added there by hand disappears the next time anyone
+#   updates the roster.
+#
+# BIOGRAPHIES ARE NOT IN THIS FILE
+#   They live in data/authors/<slug>.yaml, in the `bio:` field, and are the one
+#   thing make_people.py deliberately preserves rather than regenerating. Write
+#   them there, or through CONTENT.md / CONTENT.docx, which round-trip them.
+#
+#   Keep them to about three lines. The author card under posts shows only the
+#   first three; the full text stays on the person's own profile page.
+#
 # =============================================================================
 
 people:
@@ -50,6 +94,9 @@ people:
     role: Programme Leader / Principal Investigator
     org: University of Otago
     orcid: 0000-0002-4304-6469
+    linkedin: https://www.linkedin.com/in/harald-schwefel-ab232a9/
+    scholar: https://scholar.google.com/citations?user=Ua-xeesAAAAJ&hl=en
+    researchgate: https://www.researchgate.net/profile/Harald-Schwefel
     email: ''
     area: photonics
     groups: [Programme Leadership, Photonics]
@@ -60,6 +107,7 @@ people:
     role: Lead, Atmospheric Science
     org: University of Otago
     orcid: 0000-0002-5028-8220
+    linkedin: https://www.linkedin.com/in/annikaseppala/
     email: ''
     area: atmospheric-science
     groups: [Programme Leadership, Atmospheric Science]
@@ -70,6 +118,7 @@ people:
     role: Lead, Photonics
     org: University of Otago
     orcid: 0000-0002-9126-783X
+    linkedin: https://www.linkedin.com/in/mallika-irene-suresh-71923419b/
     email: ''
     area: photonics
     groups: [Programme Leadership, Photonics]
@@ -81,6 +130,7 @@ people:
     role: Lead, Space Systems Engineering
     org: Paihau–Robinson Research Institute, Victoria University of Wellington
     orcid: 0000-0002-7206-3989
+    linkedin: https://www.linkedin.com/in/randy-pollock/
     email: ''
     area: engineering
     groups: [Programme Leadership, Space Systems Engineering]
@@ -113,6 +163,7 @@ people:
     role: Researcher — Extreme Events
     org: University of Waikato
     orcid: ''
+    linkedin: https://www.linkedin.com/in/hamish-lewis-ba712b167/
     email: ''
     area: atmospheric-science
     groups: [Atmospheric Science]
@@ -135,6 +186,7 @@ people:
     role: Expert — Resonator Physics
     org: University of Otago
     orcid: ''
+    linkedin: https://www.linkedin.com/in/florian-sedlmeir-2b27ba34/
     email: ''
     area: photonics
     groups: [Photonics]
@@ -145,6 +197,7 @@ people:
     role: Researcher — Rydberg Sensing
     org: University of Otago
     orcid: ''
+    linkedin: https://www.linkedin.com/in/niels-kjaergaard-a074a52/
     email: ''
     area: photonics
     groups: [Photonics]
@@ -155,6 +208,7 @@ people:
     role: Expert — Radiometer Design
     org: Caltech, California, USA
     orcid: 0000-0001-9939-9311
+    linkedin: https://www.linkedin.com/in/andrey-matsko-69a02415/
     email: ''
     area: photonics
     groups: [Photonics Advisory Board]
@@ -165,6 +219,7 @@ people:
     role: Key Individual — Optical Resonators
     org: University of Otago
     orcid: 0000-0001-6058-7390
+    linkedin: https://www.linkedin.com/in/dmitry-strekalov-879aa2132/
     email: ''
     area: photonics
     groups: [Photonics Advisory Board]
@@ -176,6 +231,7 @@ people:
     role: Researcher — Numerical Modelling
     org: Colorado School of Mines, Colorado, USA
     orcid: 0000-0003-4736-0030
+    linkedin: https://www.linkedin.com/in/gabriel-santamaria-botello-32b65362/
     email: ''
     area: photonics
     groups: [Photonics]
@@ -186,6 +242,7 @@ people:
     role: Researcher — THz Antennas
     org: University of Adelaide, Australia
     orcid: 0000-0003-1155-567X
+    linkedin: https://www.linkedin.com/in/withawat-withayachumnankul-61a342166/
     email: ''
     area: photonics
     groups: [Photonics]
@@ -209,6 +266,7 @@ people:
     role: Key Individual — CubeSat Pathway
     org: Te Pūnaha Ātea – Auckland Space Institute, University of Auckland
     orcid: 0000-0001-5069-319X
+    linkedin: https://www.linkedin.com/in/nicholasrattenbury/
     email: ''
     area: engineering
     groups: [Engineering Advisory Board]
@@ -219,6 +277,7 @@ people:
     role: Expert — Aerospace Materials & Engineering
     org: Auckland University of Technology
     orcid: 0000-0002-3233-4000
+    linkedin: https://www.linkedin.com/in/jecater/
     email: ''
     area: engineering
     groups: [Engineering Advisory Board]
@@ -229,6 +288,7 @@ people:
     role: Researcher — Payload Systems
     org: Paihau–Robinson Research Institute, Victoria University of Wellington
     orcid: 0000-0001-5133-7242
+    linkedin: https://www.linkedin.com/in/betina-pavri/
     email: ''
     area: engineering
     groups: [Space Systems Engineering]
@@ -270,6 +330,7 @@ people:
     role: Key Individual — Flight Operations
     org: Kea Aerospace
     orcid: 0000-0001-6003-0920
+    linkedin: https://www.linkedin.com/in/danieldfprice/
     email: ''
     area: engineering
     groups: [Space Systems Engineering]
@@ -280,6 +341,7 @@ people:
     role: Key Individual
     org: Kea Aerospace
     orcid: ''
+    linkedin: https://www.linkedin.com/in/mark-rocket-8727353/
     email: ''
     area: engineering
     groups: [Space Systems Engineering]
@@ -292,6 +354,7 @@ people:
     role: Programme Manager
     org: University of Otago
     orcid: ''
+    linkedin: https://www.linkedin.com/in/carla-meledandri-9720669/
     email: ''
     area: ''
     groups: [Programme Leadership]
@@ -302,6 +365,7 @@ people:
     role: Lead, Engagement & Outreach
     org: University of Otago
     orcid: 0000-0002-0477-2898
+    linkedin: https://www.linkedin.com/in/jessabarder/
     email: ''
     area: ''
     groups: [Engagement & Outreach]
@@ -312,6 +376,7 @@ people:
     role: Industry — Instrument Commercialisation
     org: Quantifi Photonics
     orcid: 0000-0003-0524-3442
+    linkedin: https://www.linkedin.com/in/iannick-monfils-b2879a13/
     email: ''
     area: ''
     groups: [Engagement & Outreach]
@@ -332,6 +397,7 @@ people:
     role: Project Support
     org: Arnold & Woodhall Limited
     orcid: 0000-0002-9398-3696
+    linkedin: https://www.linkedin.com/in/simon-arnold-78418a28/
     email: ''
     area: ''
     groups: [Engagement & Outreach]
@@ -364,6 +430,7 @@ people:
     role: Advisor — Earth Observation & End Users
     org: Finnish Meteorological Institute, Finland
     orcid: 0000-0003-3095-0069
+    linkedin: https://www.linkedin.com/in/johanna-tamminen-63764b45/
     email: ''
     area: atmospheric-science
     groups: [Atmospheric Advisory Board]
@@ -374,6 +441,7 @@ people:
     role: Advisor — Stratospheric Ozone
     org: Bodeker Scientific
     orcid: 0000-0003-1094-5852
+    linkedin: https://www.linkedin.com/in/gregory-bodeker-a13a8b59/
     email: ''
     area: atmospheric-science
     groups: [Atmospheric Advisory Board]

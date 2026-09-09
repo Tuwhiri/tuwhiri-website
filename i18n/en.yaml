@@ -1,0 +1,16 @@
+# =============================================================================
+# TUWHIRI TEXT OVERRIDES
+# =============================================================================
+# Hugo merges this over the theme's own i18n/en.yaml, so anything listed here
+# replaces the theme's wording and everything else is left alone. This is not
+# a fork: the theme file is untouched, and a theme upgrade cannot silently
+# override these.
+#
+# The keys come from the theme at
+#   github.com/HugoBlox/kit -> modules/blox/i18n/en.yaml
+# =============================================================================
+
+# The theme says "Find me on" above the social links in the contact block,
+# which reads oddly for a research programme rather than a person.
+- id: block_contact_follow_me
+  translation: Follow the programme

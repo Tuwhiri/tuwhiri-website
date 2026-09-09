@@ -12,6 +12,9 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0001-6003-0920
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/danieldfprice/
+  label: LinkedIn
 user_groups:
 - Space Systems Engineering
 research_area: engineering

@@ -24,6 +24,15 @@ links:
 - icon: academicons/orcid
   url: https://orcid.org/0000-0002-4304-6469
   label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/harald-schwefel-ab232a9/
+  label: LinkedIn
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=Ua-xeesAAAAJ&hl=en
+  label: Google Scholar
+- icon: academicons/researchgate
+  url: https://www.researchgate.net/profile/Harald-Schwefel
+  label: ResearchGate
 user_groups:
 - Programme Leadership
 - Photonics
