@@ -29,25 +29,14 @@ sections:
 
   - block: markdown
     content:
-      title: Building critical capability for space-based climate monitoring with
-        next generation photonics.
+      title: Building critical capability for space-based climate monitoring with next generation photonics.
       subtitle: An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
       text: |-
         ##### An MBIE Endeavour Programme, 2025–2030, led by the University of Otago.
-       
-        The 25-year record of atmospheric composition from NASA's EOS-Aura
-        satellite ends when the spacecraft runs out of fuel. Aura's Microwave
-        Limb Sounder is the only instrument that can measure ozone and related
-        gases through the Antarctic polar winter, when the ozone hole forms. No
-        replacement mission is planned, because conventional instruments of this
-        kind are prohibitively expensive.
 
-        Tuwhiri is developing a photonic radiometer small enough and cheap
-        enough to fly on a CubeSat. It converts faint microwave and terahertz
-        signals from the atmosphere into optical light, which can then be
-        measured with ordinary photonics. Along the way we are establishing the
-        atmospheric science, photonics and space engineering capability that
-        Aotearoa New Zealand needs to keep that record going.
+        The 25-year record of atmospheric composition from NASA's EOS-Aura satellite is coming to an end. Aura's Microwave Limb Sounder is the only instrument that can measure ozone and related gases through the Antarctic polar winter, when the ozone hole forms, and it is about to run out of fuel. No replacement mission has been funded, because conventional instruments of this kind are prohibitively expensive.
+
+        Tuwhiri is developing a photonic radiometer small enough and cheap enough to fly on a CubeSat. It converts faint microwave and terahertz signals from the atmosphere into optical light, which can then be measured with ordinary photonics. Along the way we are establishing the atmospheric science, photonics and space engineering capability that Aotearoa New Zealand needs to keep that record going.
     design:
       text_color_light: true
       background:
@@ -61,19 +50,15 @@ sections:
       title: Three research areas
       items:
         - name: Atmospheric Science
-          description: What the data is for — how ozone drives extreme weather, what
-            accuracy end users need, and what we can retrieve from the instrument.
+          description: What the data is for — how ozone drives extreme weather, what accuracy end users need, and what we can retrieve from the instrument.
           icon: hero/cloud
           url: /atmospheric-science/
         - name: Photonics
-          description: The sensor itself — electro-optic up-conversion in
-            whispering-gallery-mode resonators, from bench demonstration to
-            flight-ready device.
+          description: The sensor itself — electro-optic up-conversion in whispering-gallery-mode resonators, from bench demonstration to flight-ready device.
           icon: hero/sparkles
           url: /photonics/
         - name: Space Systems Engineering
-          description: Everything around the sensor — the payload, beam-steering
-            antenna, thermal and vibration control, and the flight campaigns.
+          description: Everything around the sensor — the payload, beam-steering antenna, thermal and vibration control, and the flight campaigns.
           icon: hero/rocket-launch
           url: /engineering/
 
@@ -85,16 +70,9 @@ sections:
     content:
       title: Outreach and engagement
       text: |-
-        Building the instrument is only part of the work. Tuwhiri also builds the
-        people, partnerships and public understanding that a long-term climate
-        monitoring capability depends on.
+        Building the instrument is only part of the work. Tuwhiri also builds the people, partnerships and public understanding that a long-term climate monitoring capability depends on.
 
-        We work with Otago Museum to bring atmospheric science and photonics to
-        school students and the wider public, with a particular focus on
-        pathways into science for Māori and Pacific learners. Alongside this we
-        work with New Zealand industry on the manufacture, commercialisation and
-        deployment of the instrument, so that what we develop here can be built
-        and sold here.
+        Working with community groups and organisations, we bring atmospheric science and photonics to life for the wider public, as well as inspire school students, with a particular focus on pathways into science for Māori and Pacific learners. Alongside this, we work with New Zealand industry on the manufacturing, commercialisation and deployment of the instrument, so that what we develop here can be built and sold here.
 
         [Read more about outreach and engagement →](/outreach/)
     design:
@@ -120,7 +98,6 @@ sections:
   # View Options
   # card, citation, date-title-summary, article-grid, slides-gallery
   # ====
-     
 
   - block: collection
     id: papers
@@ -132,7 +109,7 @@ sections:
           - publications
     design:
       view: citation
-      
+
 
   # ====
   # Partner logos, in two groups. The logos block has no built-in grouping,
@@ -177,7 +154,7 @@ sections:
       background:
         gradient:
           type: linear
-  
+
   - block: logos
     content:
       title: Industry partners
@@ -208,14 +185,12 @@ sections:
         gradient_mesh:
           type: linear
           enable: true
-    
+
 
   - block: cta-card
     content:
       title: Meet the team
-      text: Tuwhiri brings together atmospheric scientists, photonics
-        researchers and space systems engineers across New Zealand, Australia,
-        Europe and the United States.
+      text: Tuwhiri brings together atmospheric scientists, photonics researchers and space systems engineers across New Zealand, Australia, Europe and the United States.
       button:
         text: See the people
         url: /people/
@@ -234,9 +209,7 @@ sections:
     id: contact
     content:
       title: Contact
-      subtitle: Enquiries about Tuwhiri are welcome. Dr Carla Meledandri, our
-        Programme Manager, is the first point of contact and will route
-        anything technical to the right person.
+      subtitle: Enquiries about Tuwhiri are welcome. Dr Carla Meledandri, our Programme Manager, is the first point of contact and will route anything technical to the right person.
       email: tuwhiri@otago.ac.nz
       visit_title: Where we are
       address:
@@ -250,9 +223,7 @@ sections:
       connect_title: For media and outreach
       prospective:
         title: Students and prospective researchers
-        text: Tuwhiri supports doctoral and masters students across atmospheric
-          science, photonics and space systems engineering. Get in touch if you
-          would like to work on this.
+        text: Tuwhiri supports doctoral and masters students across atmospheric science, photonics and space systems engineering. Get in touch if you would like to work on this.
         button:
           text: Meet the team
           url: /people/

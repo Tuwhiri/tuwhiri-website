@@ -1,3 +1,8 @@
+# Show the author card (photo, role, biography, links) under posts.
+# false removes it everywhere; can also be set per page in front matter.
+profile: true
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 # HUGO BLOX CONFIGURATION
 # Schema: hugoblox.com/schema/v2
@@ -135,11 +140,11 @@ hugoblox:
         street: "730 Cumberland Street"
         city: "Dunedin"
         region: "Otago"
-        postal_code: ""
+        postal_code: "9016"
         country: "New Zealand"
       coordinates:
-        latitude: null
-        longitude: null
+        latitude: "-45.8667"
+        longitude: "170.5167"
       phone: ""
     # AI/LLM crawler guidance (llms.txt)
     ai:

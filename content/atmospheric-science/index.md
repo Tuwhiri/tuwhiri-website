@@ -9,17 +9,10 @@ sections:
       title: Atmospheric Science
       text: |-
         ##### This area is led by Annika Seppälä.
-        Ozone in the Antarctic stratosphere shapes the jet streams that steer
-        weather across Australasia. We are quantifying how much forecast skill
-        New Zealand stands to lose when the Aura record ends, and using that to
-        set hard numbers on what a replacement instrument must deliver.
 
-        The work has four strands: establishing the link between ozone data
-        quality and extreme-event forecasting, defining instrumental
-        requirements for the photonics and engineering teams, retrieving
-        atmospheric information from the instrument using the ARTS radiative
-        transfer model, and identifying which further gases the same technique
-        could measure.
+        Ozone in the Antarctic stratosphere shapes the jet streams that steer weather across Australasia. This, in turn, affects global climate forecasting. We are quantifying how much forecasting ability will be lost when the Aura record ends. With this information we will set hard targets on what a replacement instrument must deliver.
+
+        The work has four strands: establishing the link between ozone data quality and extreme-event forecasting, defining instrumental requirements for the photonics and engineering teams, retrieving atmospheric information from the instrument using the ARTS radiative transfer model, and identifying which further gases the same technique could measure.
 
     design:
       columns: '1'

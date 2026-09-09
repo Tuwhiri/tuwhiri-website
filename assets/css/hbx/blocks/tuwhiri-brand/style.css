@@ -87,3 +87,31 @@
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Author card: shorten the biography under posts
+   ---------------------------------------------------------------------------
+   The theme's `page_author_card` partial prints the whole biography under
+   every news item, event and publication the person is credited on. With
+   several authors on a paper, a few hundred words each turns the foot of the
+   page into a wall of text that nobody reads.
+
+   This clamps it to three lines there. Nothing is removed from the HTML, so
+   the text is still in the page for search engines and screen readers; it is
+   the visual weight that is reduced.
+
+   The full biography is untouched on the person's own profile page, which
+   uses a different wrapper (`prose`) and not this card. Readers who want it
+   click the person's name.
+
+   Scoped to `.flex.pt-12.pb-4`, the card's own wrapper, so nothing else on
+   the site is affected. If a theme upgrade changes those classes the clamp
+   simply stops applying, which is a visible but harmless regression.
+--------------------------------------------------------------------------- */
+.flex.pt-12.pb-4 > div > div.text-sm.text-neutral-700:not(.font-bold),
+.flex.pt-12.pb-4 > div > div.text-sm.dark\:text-neutral-300:not(.font-bold) {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
