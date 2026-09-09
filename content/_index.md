@@ -124,25 +124,29 @@ sections:
   # only resolved for `items:`, so with `logos:` you get a row of captions and
   # no pictures. This cost an afternoon; do not "correct" it back.
   # ====
-  - block: logos
+  - block: partner-logos
     id: partners
     content:
       title: Affiliated partners
       items:
         - name: University of Otago
-          image: partners/otago.svg
+          image: partners/Otago2.svg
+          image_dark: partners/OtagoWhite.svg
           url: https://www.otago.ac.nz
           description: Host institution
         - name: Dodd-Walls Centre
           image: partners/dodd-walls.svg
+          image_dark: partners/dodd-wallsWhite.svg
           url: https://www.doddwalls.ac.nz
           description: Centre of Research Excellence for Photonic and Quantum Technologies
         - name: University of Waikato
           image: partners/waikato.svg
+          image_dark: partners/waikatoWhite.svg
           url: https://www.waikato.ac.nz
           description: Atmospheric science
         - name: Paihau–Robinson Research Institute
-          image: partners/victoria.svg
+          image: partners/victoriaGreen.svg
+          image_dark: partners/victoria.svg
           url: https://www.wgtn.ac.nz/robinson
           description: Space systems engineering, Victoria University of Wellington
     design:
@@ -155,12 +159,13 @@ sections:
         gradient:
           type: linear
 
-  - block: logos
+  - block: partner-logos
     content:
       title: Industry partners
       items:
         - name: Kea Aerospace
-          image: partners/kea-aerospace.svg
+          image: partners/kea-aerospaceBlack.svg
+          image_dark: partners/kea-aerospace.svg
           url: https://www.keaaerospace.com
           description: Stratospheric flight platforms
         - name: Quantifi Photonics
@@ -173,6 +178,7 @@ sections:
           description: Manufacture and deployment
         - name: Q-Bifrost
           image: partners/Q-Bifrost_Logo.svg
+          image_dark: partners/Q-Bifrost_LogoWhite.svg
           url: ''
           description: Industry partner
     design:

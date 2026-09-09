@@ -1,0 +1,134 @@
+{{/* =============================================================================
+     PARTNER LOGOS — a Tuwhiri block, not a theme file
+
+     A drop-in replacement for the theme's `logos` block that adds one thing:
+     a separate image for dark mode.
+
+         - block: partner-logos
+           content:
+             title: Affiliated partners
+             items:
+               - name: University of Waikato
+                 image: partners/waikato.svg
+                 image_dark: partners/waikatoWhite.svg   # optional
+                 url: https://www.waikato.ac.nz
+                 description: Atmospheric science
+           design:
+             logo_style: color      # or omit for the theme's greyscale
+             columns: 4
+
+     WHY THIS EXISTS
+     No block in the theme supports a dark variant of an image — not `logos`,
+     not `content-media`, not even the site header logo. They all render a
+     single <img>, and CSS cannot swap an image's `src`. So a partner logo
+     drawn in dark ink vanishes against a dark background, and a white one
+     vanishes against a light one.
+
+     HOW IT WORKS
+     Both files are rendered, and one is hidden. The theme defines its dark
+     variant as `&:where(.dark, .dark *)`, so `dark:` classes respond to the
+     reader's chosen mode rather than only to the operating system. Where no
+     `image_dark` is given the single image is shown in both modes, so this can
+     be adopted one logo at a time.
+
+     THIS DOES NOT OVERRIDE ANYTHING. Blocks resolve at
+     `_partials/hbx/blocks/<name>/block.html`, and the theme has no block
+     called `partner-logos`.
+     ============================================================================= */}}
+
+{{/* The theme passes the block under `wcBlock` and the page under `wcPage`.
+     Older generations used `block` / `page`, so accept either. */}}
+{{ $block := .wcBlock | default .block }}
+{{ $page := .wcPage | default .page }}
+{{ $content := $block.content | default dict }}
+{{ $design := $block.design | default dict }}
+
+{{ $title := index $content "title" }}
+{{ $subtitle := index $content "subtitle" }}
+{{ $text := index $content "text" }}
+{{ $items := index $content "items" | default slice }}
+
+{{ $logo_style := index $design "logo_style" | default "grayscale" }}
+{{ $colour := eq (lower (printf "%v" $logo_style)) "color" }}
+{{ $columns := index $design "columns" | default 4 }}
+
+{{/* Tailwind cannot see class names built at run time, so the possible
+     column counts are written out in full. */}}
+{{ $grid := index (dict
+      "2" "grid-cols-2"
+      "3" "grid-cols-2 sm:grid-cols-3"
+      "4" "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+      "5" "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
+      "6" "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
+    ) (printf "%v" $columns) | default "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" }}
+
+{{/* Greyscale until hovered, unless the block asks for full colour. */}}
+{{ $img_class := cond $colour
+    "h-12 sm:h-14 lg:h-16 w-auto mx-auto object-contain transition-transform duration-300 group-hover:scale-110"
+    "h-12 sm:h-14 lg:h-16 w-auto mx-auto object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" }}
+
+<div class="mx-auto max-w-6xl px-4 py-10">
+
+  {{ with $title }}
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight text-center mb-3">
+      {{ . | markdownify }}
+    </h2>
+  {{ end }}
+  {{ with $subtitle }}
+    <p class="text-xl text-primary-600 dark:text-primary-400 font-medium text-center mb-2">{{ . | markdownify }}</p>
+  {{ end }}
+  {{ with $text }}
+    <div class="prose dark:prose-invert max-w-none text-center mb-6">{{ . | markdownify }}</div>
+  {{ end }}
+
+  <div class="grid {{ $grid }} gap-6 items-center">
+    {{ range $items }}
+      {{ $name := .name | default "" }}
+      {{ $url := .url | default "" }}
+      {{ $desc := .description | default "" }}
+
+      {{/* Resolve both images against assets/media/, as the theme does. */}}
+      {{ $light := "" }}
+      {{ $dark := "" }}
+      {{ with .image }}
+        {{ with resources.Get (printf "media/%s" .) }}
+          {{ $light = .RelPermalink }}
+        {{ else }}
+          {{ $light = . | relURL }}
+        {{ end }}
+      {{ end }}
+      {{ with .image_dark }}
+        {{ with resources.Get (printf "media/%s" .) }}
+          {{ $dark = .RelPermalink }}
+        {{ else }}
+          {{ $dark = . | relURL }}
+        {{ end }}
+      {{ end }}
+
+      <div class="group text-center">
+        {{ if $url }}<a href="{{ $url }}" target="_blank" rel="noopener"
+             class="block p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300"
+             {{ with $name }}aria-label="{{ . }}"{{ end }}>{{ else }}
+        <div class="block p-4 rounded-lg">{{ end }}
+
+          {{ if $dark }}
+            {{/* Two files: show one per mode. */}}
+            <img src="{{ $light }}" alt="{{ $name | default "Partner logo" }}"
+                 class="{{ $img_class }} block dark:hidden" loading="lazy">
+            <img src="{{ $dark }}" alt="" aria-hidden="true"
+                 class="{{ $img_class }} hidden dark:block" loading="lazy">
+          {{ else if $light }}
+            {{/* One file: used in both modes. */}}
+            <img src="{{ $light }}" alt="{{ $name | default "Partner logo" }}"
+                 class="{{ $img_class }}" loading="lazy">
+          {{ end }}
+
+          {{ with $desc }}
+            <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">{{ . | markdownify }}</p>
+          {{ end }}
+
+        {{ if $url }}</a>{{ else }}</div>{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>
