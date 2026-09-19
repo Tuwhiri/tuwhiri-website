@@ -52,9 +52,14 @@ outputs:
   section: [HTML, RSS]
 imaging:
   resampleFilter: lanczos
-  quality: 90
   anchor: smart
-  hint: picture
+  # `quality` and `hint` moved under the individual formats in Hugo 0.163.
+  # The old top-level keys still work but warn on every build.
+  jpeg:
+    quality: 90
+  webp:
+    quality: 90
+    hint: picture
 timeout: 600000
 taxonomies:
   author: authors
@@ -66,5 +71,20 @@ markup:
     lineNos: false
 security:
   _merge: deep
+  # Hugo 0.165.0 removed `tailwindcss` from the default security.exec.allow
+  # list, so from that version the build fails with:
+  #   TAILWINDCSS: ... access denied: "tailwindcss" is not whitelisted in
+  #   policy "security.exec.allow"
+  # Naming the key replaces the default list rather than adding to it, so the
+  # rest of the defaults are repeated here.
+  exec:
+    allow:
+      - ^(dart-)?sass$
+      - ^go$
+      - ^git$
+      - ^node$
+      - ^npx$
+      - ^postcss$
+      - ^tailwindcss$
 sitemap:
   _merge: deep
