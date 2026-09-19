@@ -15,6 +15,9 @@ links:
 - icon: brands/linkedin
   url: https://www.linkedin.com/in/nicholasrattenbury/
   label: LinkedIn
+- icon: hero/globe-alt
+  url: https://profiles.auckland.ac.nz/n-rattenbury
+  label: Website
 user_groups:
 - Engineering Advisory Board
 research_area: engineering

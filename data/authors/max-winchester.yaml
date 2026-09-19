@@ -1,0 +1,26 @@
+schema: hugoblox/author/v1
+slug: max-winchester
+name:
+  display: Max Goddard-Winchester
+  given: Max
+  family: Goddard-Winchester
+role: Researcher — Payload Systems
+bio: Max Goddard-Winchester is a Research Engineer at the Robinson Research Institute,
+  and a part of the Space Systems Engineers of Tuwhiri. With a background in mechanical
+  engineering, he has led the mechanical design of several superconducting magnets
+  systems and electric propulsion systems, including the design and flight qualification
+  of the Hēki payload which successfully operated aboard the International Space Station.
+  With this experience, his role is ensuring the structural performance of Tuwhiri's
+  experimental payloads.
+affiliations:
+- name: Victoria University of Wellington
+links:
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=IYaqRTkAAAAJ&hl=en&oi=ao
+  label: Google Scholar
+- icon: academicons/researchgate
+  url: https://www.researchgate.net/profile/Max-Goddard-Winchester?ev=prf_overview
+  label: ResearchGate
+user_groups:
+- Space Systems Engineering
+research_area: engineering

@@ -9,6 +9,9 @@ bio: ''
 affiliations:
 - name: University of Otago
 links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-7830-9468
+  label: ORCID
 - icon: brands/linkedin
   url: https://www.linkedin.com/in/niels-kjaergaard-a074a52/
   label: LinkedIn

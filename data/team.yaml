@@ -139,7 +139,7 @@ people:
   # --- Atmospheric Science --------------------------------------------------
 
   - slug: hannah-kessenich
-    name: Hannah Kessenich
+    name: Hannah E. Kessenich
     role: Lead Atmospheric Modeller
     org: University of Otago
     orcid: 0009-0005-1591-8898
@@ -185,8 +185,11 @@ people:
     name: Florian Sedlmeir
     role: Expert — Resonator Physics
     org: University of Otago
+    bio: ''
     orcid: ''
+    scholar: https://scholar.google.com/citations?user=4QDtGVwAAAAJ&hl=deLinkedIn
     linkedin: https://www.linkedin.com/in/florian-sedlmeir-2b27ba34/
+    researchgate: https://www.researchgate.net/profile/Florian-Sedlmeir-2
     email: ''
     area: photonics
     groups: [Photonics]
@@ -196,7 +199,7 @@ people:
     name: Niels Kjærgaard
     role: Researcher — Rydberg Sensing
     org: University of Otago
-    orcid: ''
+    orcid: '0000-0002-7830-9468'
     linkedin: https://www.linkedin.com/in/niels-kjaergaard-a074a52/
     email: ''
     area: photonics
@@ -244,6 +247,7 @@ people:
     orcid: 0000-0003-1155-567X
     linkedin: https://www.linkedin.com/in/withawat-withayachumnankul-61a342166/
     email: ''
+    website: https://www.thz-el.org/
     area: photonics
     groups: [Photonics]
     match: [Withayachumnankul]
@@ -268,6 +272,7 @@ people:
     orcid: 0000-0001-5069-319X
     linkedin: https://www.linkedin.com/in/nicholasrattenbury/
     email: ''
+    website: https://profiles.auckland.ac.nz/n-rattenbury
     area: engineering
     groups: [Engineering Advisory Board]
     match: [Rattenbury]
@@ -304,6 +309,28 @@ people:
     groups: [Space Systems Engineering]
     match: [Webster]
 
+  - slug: celine-jane
+    name: Celine Jane
+    role: Researcher — Payload Systems
+    org: Victoria University of Wellington
+    orcid: 0009-0001-8609-7178
+    email: 'celine.jane@vuw.ac.nz'
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Jane]
+
+  - slug: max-winchester
+    name: Max Goddard-Winchester
+    role: Researcher — Payload Systems
+    org: Victoria University of Wellington
+    orcid: ''
+    bio: ''
+    scholar: https://scholar.google.com/citations?user=IYaqRTkAAAAJ&hl=en&oi=ao
+    researchgate: https://www.researchgate.net/profile/Max-Goddard-Winchester?ev=prf_overview
+    area: engineering
+    groups: [Space Systems Engineering]
+    match: [Goddard-Winchester]
+
   - slug: tarik-errabih
     name: Tarik Errabih
     role: Expert — Space Engineering
@@ -327,7 +354,7 @@ people:
 
   - slug: daniel-price
     name: Daniel Price
-    role: Key Individual — Flight Operations
+    role: Key Individual — Chief Scientist - Kea Aerospace
     org: Kea Aerospace
     orcid: 0000-0001-6003-0920
     linkedin: https://www.linkedin.com/in/danieldfprice/

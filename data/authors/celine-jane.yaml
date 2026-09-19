@@ -1,0 +1,28 @@
+schema: hugoblox/author/v1
+slug: celine-jane
+name:
+  display: Celine Jane
+  given: Celine
+  family: Jane
+role: Researcher — Payload Systems
+bio: Celine is a Research Engineer in the space team at the Paihau—Robinson Research
+  Institute. She has a Masters of Engineering from Victoria University of Wellington
+  focusing on control system design for spacecraft using electromagnetic propulsion,
+  as well as a Bachelor of Engineering (Hons) in Electronic and Computer System Engineering.
+  Celine has previous industry experience in the NZ aerospace start-up scene, in addition
+  to being award the NZ Space Scholarship in 2023 where she undertook an internship
+  at NASA’s Jet Propulsion Lab in California. At the Robinson Research Institute,
+  Celine spends her time developing spaceflight software and avionics, orbital and
+  thermal models of spacecraft, and electromagnetic thruster instrumentation.
+affiliations:
+- name: Victoria University of Wellington
+links:
+- icon: at-symbol
+  url: mailto:celine.jane@vuw.ac.nz
+  label: Email
+- icon: academicons/orcid
+  url: https://orcid.org/0009-0001-8609-7178
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering
