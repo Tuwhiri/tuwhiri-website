@@ -1,0 +1,29 @@
+schema: hugoblox/author/v1
+slug: greg-bodeker
+name:
+  display: Greg Bodeker
+  given: Greg
+  family: Bodeker
+role: Advisor — Stratospheric Ozone
+bio: Greg Bodeker is the director of Bodeker Scientific Ltd, an independent research
+  organisation that has been operating in New Zealand since October 2009. Bodeker
+  Scientific conducts fundamental climate change research as well as research at the
+  interfaces of climate and other disciplines (e.g. climate and finance, and climate
+  and architecture). Greg has a PhD in Physics from the University of Natal in South
+  Africa, and worked for the National Institute of Water and Atmospheric Research
+  (NIWA) for a little over 15 years where he developed a strong programme of research
+  in atmospheric chemistry and physics with a focus on Antarctic ozone depletion.
+  Greg is also an adjunct professor at Victoria University. He has a passion for seeing
+  innovation used to transition New Zealand's economy to a long-term sustainable model.
+affiliations:
+- name: Bodeker Scientific
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0003-1094-5852
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/gregory-bodeker-a13a8b59/
+  label: LinkedIn
+user_groups:
+- Atmospheric Advisory Board
+research_area: atmospheric-science

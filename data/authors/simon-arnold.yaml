@@ -1,0 +1,26 @@
+schema: hugoblox/author/v1
+slug: simon-arnold
+name:
+  display: Simon Arnold
+  given: Simon
+  family: Arnold
+role: Project Support
+bio: Simon Arnold is a research strategy and innovation advisor with extensive experience
+  in science, engineering, and technology commercialisation. As Managing Director
+  of [https://arnold.co.nz](https://arnold.co.nz), he works with research organisations,
+  funders, and industry partners on research strategy, roadmapping, and value creation.
+  Simon has held leadership positions across New Zealand's research, energy, manufacturing,
+  and business sectors, and has played a key role in shaping national energy research
+  strategies. His work focuses on turning New Zealand's scientific and engineering
+  capabilities into lasting economic and societal impact.
+affiliations:
+- name: Arnold & Woodhall Limited
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-9398-3696
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/simon-arnold-78418a28/
+  label: LinkedIn
+user_groups:
+- Engagement & Outreach

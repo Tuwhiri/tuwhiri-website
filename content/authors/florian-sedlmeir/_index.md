@@ -1,17 +1,8 @@
 ---
 title: Florian Sedlmeir
-first_name: Florian
-last_name: Sedlmeir
-superuser: false
-role: Expert — Resonator Physics
-organizations:
-- name: University of Otago
-  url: ''
-bio: ''
-social: []
-user_groups:
-- Photonics
-research_area: photonics
+# This file exists only so the profile page is built.
+# The details shown come from data/authors/florian-sedlmeir.yaml
+build:
+  render: always
+  list: always
 ---
-
-<!-- Write Florian Sedlmeir's biography here, in plain sentences. Delete this comment line first. -->

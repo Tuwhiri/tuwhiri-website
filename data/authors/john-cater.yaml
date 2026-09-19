@@ -1,0 +1,20 @@
+schema: hugoblox/author/v1
+slug: john-cater
+name:
+  display: John Cater
+  given: John
+  family: Cater
+role: Expert — Aerospace Materials & Engineering
+bio: ''
+affiliations:
+- name: Auckland University of Technology
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-3233-4000
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/jecater/
+  label: LinkedIn
+user_groups:
+- Engineering Advisory Board
+research_area: engineering

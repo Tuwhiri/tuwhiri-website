@@ -1,0 +1,13 @@
+schema: hugoblox/author/v1
+slug: patrick-fogarty
+name:
+  display: Patrick Fogarty
+  given: Patrick
+  family: Fogarty
+role: Industry — Manufacture & Deployment
+bio: ''
+affiliations:
+- name: Shamrock Industries
+links: []
+user_groups:
+- Engagement & Outreach

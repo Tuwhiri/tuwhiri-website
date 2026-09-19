@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: mark-rocket
+name:
+  display: Mark Rocket
+  given: Mark
+  family: Rocket
+role: Key Individual
+bio: ''
+affiliations:
+- name: Kea Aerospace
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/mark-rocket-8727353/
+  label: LinkedIn
+user_groups:
+- Space Systems Engineering
+research_area: engineering

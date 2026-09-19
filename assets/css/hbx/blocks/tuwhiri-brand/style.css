@@ -1,0 +1,117 @@
+/* ==========================================================================
+   TUWHIRI BRAND OVERRIDES
+
+   Loaded automatically. The theme compiles every
+   assets/css/hbx/blocks/<name>/style.css into the site stylesheet, so this
+   file needs no configuration — but it must keep that exact path and
+   filename. A file placed directly in the folder above is silently ignored.
+   ==========================================================================
+
+   WHAT THIS FIXES
+
+   The navigation drop-down under "Research" was unreadable in light mode.
+
+   The theme's stylesheet gives the drop-down a white panel and sets a text
+   colour only for dark mode. In light mode the links inherit their colour
+   from the header. With the stock theme that is harmless, because its header
+   is pale with dark text. Our header is Te Po indigo with Atea text, as the
+   brand requires, so the links inherited Atea and rendered pale blue on
+   white: a contrast ratio of roughly 1.06 to 1, which is invisible.
+
+   Rather than forcing dark text onto a white panel, the drop-down now matches
+   the header it falls from. That gives 15.17:1 and reads as one dark band,
+   closer to the navigation in the brand document.
+   ========================================================================== */
+
+/* --- The panel -----------------------------------------------------------
+   The `.dark` selector is repeated because the theme's own `dark:bg-slate-900`
+   is more specific than a bare class and would otherwise win. */
+.nav-dropdown-list,
+.dark .nav-dropdown-list {
+  background-color: var(--hb-color-header-bg);
+  border: 1px solid color-mix(in srgb, var(--hb-color-header-fg) 15%, transparent);
+}
+
+/* --- The links inside it ------------------------------------------------- */
+.nav-dropdown-link,
+.dark .nav-dropdown-link {
+  color: var(--hb-color-header-fg);
+}
+
+/* Hover uses the lighter magenta step, which reaches 9.33:1 against Te Po.
+   The theme's default hover is primary-700, a dark magenta giving only
+   2.90:1 on this background. */
+.nav-dropdown-link:hover,
+.dark .nav-dropdown-link:hover {
+  color: var(--color-primary-400);
+}
+
+/* A restrained row highlight. The theme fills the row with solid magenta in
+   dark mode, which is heavy against Te Po and drags the text contrast down. */
+.nav-dropdown-item:hover,
+.dark .nav-dropdown-item:hover {
+  background-color: color-mix(in srgb, var(--color-primary-500) 18%, transparent);
+  border-radius: 0.25rem;
+}
+
+/* ==========================================================================
+   PARTNER LOGOS: LET WIDE ONES USE THEIR FULL WIDTH
+
+   The block gives every logo a fixed slot 10rem wide and caps the image at
+   7rem, on the reasoning that a uniform footprint looks tidier. At the 3.5rem
+   height it uses, that cap only suits logos up to about 2:1.
+
+   Anything wider is scaled down to fit, and loses height as a result. Kea
+   Aerospace is 4.45:1, so it was rendering 1.57rem tall against Shamrock's
+   3.5rem -- less than half the size, and visibly weaker on the page.
+
+   Raising the cap to 16rem lets even the widest of yours (Kea, at 4.45:1) keep
+   its full 3.5rem height. The slot becomes
+   flexible so it grows with the logo instead of clipping it, while a minimum
+   keeps narrow logos from crowding together.
+
+   Colour is now handled by `logo_style: color` in content/_index.md, so the
+   filter override that used to live here has been removed.
+   ========================================================================== */
+
+.logos-block-container img {
+  /* Overrides an inline style, so !important is unavoidable here. */
+  max-width: 16rem !important;
+}
+
+/* The slot: `w-40` fixed becomes flexible with a floor. */
+.logos-block-container a,
+.logos-block-container [role="img"] {
+  width: auto !important;
+  min-width: 8rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Author card: shorten the biography under posts
+   ---------------------------------------------------------------------------
+   The theme's `page_author_card` partial prints the whole biography under
+   every news item, event and publication the person is credited on. With
+   several authors on a paper, a few hundred words each turns the foot of the
+   page into a wall of text that nobody reads.
+
+   This clamps it to three lines there. Nothing is removed from the HTML, so
+   the text is still in the page for search engines and screen readers; it is
+   the visual weight that is reduced.
+
+   The full biography is untouched on the person's own profile page, which
+   uses a different wrapper (`prose`) and not this card. Readers who want it
+   click the person's name.
+
+   Scoped to `.flex.pt-12.pb-4`, the card's own wrapper, so nothing else on
+   the site is affected. If a theme upgrade changes those classes the clamp
+   simply stops applying, which is a visible but harmless regression.
+--------------------------------------------------------------------------- */
+.flex.pt-12.pb-4 > div > div.text-sm.text-neutral-700:not(.font-bold),
+.flex.pt-12.pb-4 > div > div.text-sm.dark\:text-neutral-300:not(.font-bold) {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

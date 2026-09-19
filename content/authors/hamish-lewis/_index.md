@@ -1,17 +1,8 @@
 ---
 title: Hamish Lewis
-first_name: Hamish
-last_name: Lewis
-superuser: false
-role: Researcher — Extreme Events
-organizations:
-- name: University of Waikato
-  url: ''
-bio: ''
-social: []
-user_groups:
-- Atmospheric Science
-research_area: atmospheric-science
+# This file exists only so the profile page is built.
+# The details shown come from data/authors/hamish-lewis.yaml
+build:
+  render: always
+  list: always
 ---
-
-<!-- Write Hamish Lewis's biography here, in plain sentences. Delete this comment line first. -->

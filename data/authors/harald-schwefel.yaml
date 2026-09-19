@@ -1,0 +1,39 @@
+schema: hugoblox/author/v1
+slug: harald-schwefel
+name:
+  display: Harald G. L. Schwefel
+  given: Harald
+  family: Schwefel
+  middle: G. L.
+role: Programme Leader / Principal Investigator
+bio: 'Harald Schwefel is a Professor in the Physics Department of the University of
+  Otago and Science Lead of Tuwhiri. He is also the Deputy Director Science in Te
+  Whai Ao – Dodd-Walls Centre for Photonic and Quantum Technologies and Principal
+  Investigator in Quantum Technologies Aotearoa (QTA).
+
+
+  His research interests are in the use of optical resonators. Such high-quality resonators
+  are great to generate very high field intensities. With high fields the interaction
+  of light with matter can show significant nonlinearities and light can interact
+  with itself and new colours can be created. A side effect of these high-quality
+  resonators is that they are extremely sensitive to changes in the environment making
+  them an ideal candidate to measure such changes.'
+affiliations:
+- name: University of Otago
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-4304-6469
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/harald-schwefel-ab232a9/
+  label: LinkedIn
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=Ua-xeesAAAAJ&hl=en
+  label: Google Scholar
+- icon: academicons/researchgate
+  url: https://www.researchgate.net/profile/Harald-Schwefel
+  label: ResearchGate
+user_groups:
+- Programme Leadership
+- Photonics
+research_area: photonics

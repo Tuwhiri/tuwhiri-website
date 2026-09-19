@@ -1,0 +1,17 @@
+schema: hugoblox/author/v1
+slug: emile-webster
+name:
+  display: Emile Webster
+  given: Emile
+  family: Webster
+role: Researcher — Payload Systems
+bio: ''
+affiliations:
+- name: Victoria University of Wellington
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-1788-5904
+  label: ORCID
+user_groups:
+- Space Systems Engineering
+research_area: engineering

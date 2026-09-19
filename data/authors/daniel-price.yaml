@@ -1,0 +1,21 @@
+schema: hugoblox/author/v1
+slug: daniel-price
+name:
+  display: Daniel Price
+  given: Daniel
+  family: Price
+role: Key Individual — Chief Scientist - Kea Aerospace
+bio: Stratospheric science and earth observation delivery Chief Scientist - Kea Aerospace
+  Remote Sensing/Glaciologist - University of Canterbury
+affiliations:
+- name: Kea Aerospace
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0001-6003-0920
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/danieldfprice/
+  label: LinkedIn
+user_groups:
+- Space Systems Engineering
+research_area: engineering

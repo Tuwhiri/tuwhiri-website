@@ -1,20 +1,8 @@
 ---
 title: Nathaniel Livesey
-first_name: Nathaniel
-last_name: Livesey
-superuser: false
-role: Advisor — Aura MLS Principal Investigator
-organizations:
-- name: Jet Propulsion Laboratory, NASA
-  url: ''
-bio: ''
-social:
-- icon: orcid
-  icon_pack: ai
-  link: https://orcid.org/0000-0001-8753-9153
-user_groups:
-- Advisory Board
-research_area: atmospheric-science
+# This file exists only so the profile page is built.
+# The details shown come from data/authors/nathaniel-livesey.yaml
+build:
+  render: always
+  list: always
 ---
-
-<!-- Write Nathaniel Livesey's biography here, in plain sentences. Delete this comment line first. -->

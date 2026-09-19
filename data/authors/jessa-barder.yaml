@@ -1,0 +1,25 @@
+schema: hugoblox/author/v1
+slug: jessa-barder
+name:
+  display: Jessa Barder
+  given: Jessa
+  family: Barder
+role: Lead, Engagement & Outreach
+bio: Leading the community engagement programme, Jessa brings seven years of science
+  engagement experience across a wide variety of subject matter to the team. Currently
+  based in the University of Otago’s Physics Department, she is also the Deputy Director
+  – Community Engagement for Te Whai Ao – Dodd-Walls Centre and supports the department’s
+  engagement activities. Despite the “children’s presenter” energy she often manifests,
+  her particular area of research interest is the impact of relevant, appropriate,
+  and interactive engagement activities on Kiwis over 65.
+affiliations:
+- name: University of Otago
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0002-0477-2898
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/jessabarder/
+  label: LinkedIn
+user_groups:
+- Engagement & Outreach

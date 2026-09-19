@@ -1,0 +1,34 @@
+schema: hugoblox/author/v1
+slug: withawat-withayachumnankul
+name:
+  display: Withawat Withayachumnankul
+  given: Withawat
+  family: Withayachumnankul
+role: Researcher — THz Antennas
+bio: Withawat Withayachumnankul is a Professor at Adelaide University and the Founding
+  Leader of the Terahertz Engineering Laboratory. An ARC Future Fellow and a Fellow
+  of both the IEEE and Optica, his research programs focus on terahertz integration,
+  metasurfaces, antennas, communications, and radar systems. He currently leads a
+  research group of approximately 15 PhD students and postdoctoral researchers and
+  has maintained a long-standing collaboration as a Visiting Researcher at Osaka University
+  since 2017. His scholarly work includes over 140 journal publications, and his contributions
+  have been recognised with the IRMMW-THz Society Young Scientist Award (2020) and
+  the National Measurement Institute Barry Inglis Medal (2024). Professor Withayachumnankul
+  demonstrates extensive service to the engineering community, notably serving on
+  the ARC College of Experts and as a Track Editor for the IEEE Transactions on Terahertz
+  Science and Technology.
+affiliations:
+- name: University of Adelaide, Australia
+links:
+- icon: academicons/orcid
+  url: https://orcid.org/0000-0003-1155-567X
+  label: ORCID
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/withawat-withayachumnankul-61a342166/
+  label: LinkedIn
+- icon: hero/globe-alt
+  url: https://www.thz-el.org/
+  label: Website
+user_groups:
+- Photonics
+research_area: photonics

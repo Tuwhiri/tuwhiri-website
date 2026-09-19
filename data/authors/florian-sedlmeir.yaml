@@ -1,0 +1,31 @@
+schema: hugoblox/author/v1
+slug: florian-sedlmeir
+name:
+  display: Florian Sedlmeir
+  given: Florian
+  family: Sedlmeir
+role: Expert — Resonator Physics
+bio: Florian Sedlmeir is a Research Fellow and Marie Skłodowska-Curie Fellow at the
+  University of Otago. His research focuses on high-Q whispering-gallery-mode resonators,
+  nonlinear optics, and the conversion of microwave and terahertz signals to the optical
+  domain. He completed his PhD at Friedrich-Alexander University Erlangen-Nürnberg,
+  carrying out his research at the Max Planck Institute for the Science of Light,
+  and subsequently worked in both academic research and industry before returning
+  to the University of Otago in 2022. His current work explores electro-optic frequency
+  conversion for low-noise millimetre-wave and terahertz detection, as well as microwave-to-optical
+  interfaces for quantum technologies.
+affiliations:
+- name: University of Otago
+links:
+- icon: brands/linkedin
+  url: https://www.linkedin.com/in/florian-sedlmeir-2b27ba34/
+  label: LinkedIn
+- icon: academicons/google-scholar
+  url: https://scholar.google.com/citations?user=4QDtGVwAAAAJ&hl=deLinkedIn
+  label: Google Scholar
+- icon: academicons/researchgate
+  url: https://www.researchgate.net/profile/Florian-Sedlmeir-2
+  label: ResearchGate
+user_groups:
+- Photonics
+research_area: photonics

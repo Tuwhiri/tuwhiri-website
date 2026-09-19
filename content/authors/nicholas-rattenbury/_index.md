@@ -1,20 +1,8 @@
 ---
 title: Nicholas Rattenbury
-first_name: Nicholas
-last_name: Rattenbury
-superuser: false
-role: Key Individual — CubeSat Pathway
-organizations:
-- name: Te Pūnaha Ātea – Auckland Space Institute, University of Auckland
-  url: ''
-bio: ''
-social:
-- icon: orcid
-  icon_pack: ai
-  link: https://orcid.org/0000-0001-5069-319X
-user_groups:
-- Space Systems Engineering
-research_area: engineering
+# This file exists only so the profile page is built.
+# The details shown come from data/authors/nicholas-rattenbury.yaml
+build:
+  render: always
+  list: always
 ---
-
-<!-- Write Nicholas Rattenbury's biography here, in plain sentences. Delete this comment line first. -->

@@ -1,21 +1,8 @@
 ---
 title: Mallika Suresh
-first_name: Mallika
-last_name: Suresh
-superuser: false
-role: Co-Lead, Photonics
-organizations:
-- name: University of Otago
-  url: ''
-bio: ''
-social:
-- icon: orcid
-  icon_pack: ai
-  link: https://orcid.org/0000-0002-9126-783X
-user_groups:
-- Programme Leadership
-- Photonics
-research_area: photonics
+# This file exists only so the profile page is built.
+# The details shown come from data/authors/mallika-suresh.yaml
+build:
+  render: always
+  list: always
 ---
-
-<!-- Write Mallika Suresh's biography here, in plain sentences. Delete this comment line first. -->

@@ -1,17 +1,8 @@
 ---
 title: Mark Rocket
-first_name: Mark
-last_name: Rocket
-superuser: false
-role: Key Individual
-organizations:
-- name: Kea Aerospace
-  url: ''
-bio: ''
-social: []
-user_groups:
-- Space Systems Engineering
-research_area: engineering
+# This file exists only so the profile page is built.
+# The details shown come from data/authors/mark-rocket.yaml
+build:
+  render: always
+  list: always
 ---
-
-<!-- Write Mark Rocket's biography here, in plain sentences. Delete this comment line first. -->
