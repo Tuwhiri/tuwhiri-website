@@ -31,7 +31,7 @@ name: Sync publications from Zotero
 
 on:
   schedule:
-    - cron: '0 19 * * 0'   # Sunday 19:00 UTC = Monday morning in New Zealand
+    - cron: '0 10 * * 0'   # Sunday 10:00 UTC = Monday morning in New Zealand
   workflow_dispatch:
     inputs:
       target_branch:
