@@ -1,7 +1,7 @@
 # =============================================================================
 # AUTOMATIC PUBLICATION UPDATES FROM ZOTERO
 # =============================================================================
-# Runs every Monday morning (NZ time) and whenever you press "Run workflow"
+# Runs every Sunday night (NZ time) and whenever you press "Run workflow"
 # on the Actions tab. It reads the Tuwhiri Zotero group library and updates
 # the publication pages on the `draft` branch.
 #
@@ -31,7 +31,7 @@ name: Sync publications from Zotero
 
 on:
   schedule:
-    - cron: '0 10 * * 0'   # Sunday 10:00 UTC = Monday morning in New Zealand
+    - cron: '0 10 * * 0'   # Sunday 10:00 UTC = Sunday 22:00 NZST / 23:00 NZDT
   workflow_dispatch:
     inputs:
       target_branch:
