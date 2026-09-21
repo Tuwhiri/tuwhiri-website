@@ -2,7 +2,8 @@
 # NETLIFY BUILD SETTINGS
 # =============================================================================
 # Three kinds of build, as before:
-#   production      = `main` branch  -> https://tuwhiri.netlify.app  (public)
+#   production      = `main` branch  -> https://tuwhiri.ac.nz  (public)
+#                     (also reachable at tuwhiri.netlify.app, which redirects)
 #   branch-deploy   = `draft` branch -> https://draft--tuwhiri.netlify.app
 #   deploy-preview  = one temporary site per pull request
 #
@@ -62,3 +63,29 @@
   package = "netlify-plugin-hugo-cache-resources"
   [plugins.inputs]
     debug = true
+
+
+# =============================================================================
+# CANONICAL DOMAIN
+# =============================================================================
+# The public address is https://tuwhiri.ac.nz. Netlify also serves every site
+# at its own *.netlify.app address, which would leave two copies of the site
+# for search engines to find and for people to bookmark.
+#
+# This sends the old address to the new one, keeping the path, with a
+# permanent (301) redirect -- so links shared before the move still land on
+# the right page.
+#
+# It matches ONLY the exact host tuwhiri.netlify.app. The draft site at
+# draft--tuwhiri.netlify.app and the per-PR deploy previews have different
+# hostnames and are not affected.
+#
+# ORDER MATTERS: tuwhiri.ac.nz must already be attached to THIS Netlify site
+# before this reaches `main`. Deployed earlier, it would send visitors to
+# whatever else is answering on tuwhiri.ac.nz at the time.
+[[redirects]]
+  from = "https://tuwhiri.netlify.app/*"
+  to = "https://tuwhiri.ac.nz/:splat"
+  status = 301
+  force = true
+
