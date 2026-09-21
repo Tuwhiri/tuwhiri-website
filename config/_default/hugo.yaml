@@ -6,7 +6,9 @@
 # Website name (set in params.yaml under hugoblox.branding.name)
 title: ''
 # Website URL
-baseURL: 'https://tuwhiri.netlify.app/'
+# Used for local builds only. On Netlify the production build passes
+# `-b $URL`, and Netlify sets $URL to the site's primary domain.
+baseURL: 'https://tuwhiri.ac.nz/'
 
 ############################
 ## LANGUAGE
