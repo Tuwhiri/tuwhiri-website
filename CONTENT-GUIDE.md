@@ -17,7 +17,7 @@ There are two copies of the website.
 | | Address | What it is |
 |---|---|---|
 | **Draft** | `draft--tuwhiri.netlify.app` | The working version. Rough edges fine. |
-| **Live** | `tuwhiri.netlify.app` | What the public sees. |
+| **Live** | `tuwhiri.ac.nz` | What the public sees. |
 
 You always edit the draft. When the draft looks right, someone with approval
 rights publishes it to the live site.

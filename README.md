@@ -6,7 +6,7 @@ climate monitoring with next generation photonics.*
 
 | | |
 |---|---|
-| Live site | `https://tuwhiri.netlify.app` — built from `main` |
+| Live site | `https://tuwhiri.ac.nz` — built from `main` |
 | Draft site | `https://draft--tuwhiri.netlify.app` — built from `draft` |
 | Repository | `https://github.com/Tuwhiri/tuwhiri-website` |
 | Publications | Synced weekly from Zotero group `6627926` |
@@ -21,17 +21,17 @@ maintains the machinery.
 
 | Component | Version / notes |
 |---|---|
-| Hugo | **Extended**, ≥ 0.161.1. Pinned to 0.164.0 in `netlify.toml` |
+| Hugo | **Extended**, ≥ 0.161.1. Pinned to 0.166.0 in `netlify.toml` |
 | Theme | HugoBlox Kit — `github.com/HugoBlox/kit/modules/blox`, pinned in `go.mod` |
 | Template origin | HugoBlox `academic-cv` |
-| Go | Required — the theme is a Hugo Module |
+| Go | Required — the theme is a Hugo Module. Pinned to 1.24.0 |
 | Node | 22. Tailwind CSS and Preact are compiled at build time |
 | Package manager | **pnpm**, declared in `package.json` |
 | Search index | `pagefind`, generated after Hugo runs |
 | Host | Netlify |
 | CI | GitHub Actions |
 
-Three things bite newcomers:
+Four things bite newcomers:
 
 - **Hugo must be Extended and ≥ 0.161.1.** Older versions fail with errors
   about jsx or undefined template functions that say nothing about the version.
@@ -41,6 +41,11 @@ Three things bite newcomers:
   `binary "tailwindcss" is not a Node.js script`.
 - **Use pnpm, not npm.** `npm install` writes a competing lockfile and lets
   local builds drift from Netlify's.
+- **`security.exec.allow` must list `tailwindcss`.** Hugo 0.165 removed it from
+  the default list, and without it the build fails outright:
+  `access denied: "tailwindcss" is not whitelisted`. It is set in
+  `config/_default/hugo.yaml`. Naming the key replaces Hugo's default list, so
+  the other entries there are deliberate — do not trim them.
 
 ### Local build
 
@@ -62,7 +67,7 @@ is built separately. Use `pnpm run build` to test it.
 
 | Branch | Netlify context | URL | Who merges |
 |---|---|---|---|
-| `main` | production | `tuwhiri.netlify.app` | approver only, via PR |
+| `main` | production | `tuwhiri.ac.nz` | approver only, via PR |
 | `draft` | branch deploy | `draft--tuwhiri.netlify.app` | anyone with write access |
 | PR branches | deploy preview | auto-generated | — |
 
@@ -134,6 +139,14 @@ Two fields deserve attention:
 
 Photographs go in `assets/media/authors/<slug>.jpg`, matched by filename.
 
+**Profile links** (`orcid`, `linkedin`, `scholar`, `researchgate`, `github`,
+`website`) are optional fields in `data/team.yaml`. Never add them to
+`data/authors/` — the script rebuilds `links:` there on every run.
+
+**Biographies are the exception.** They live only in `data/authors/<slug>.yaml`
+(`bio:`), and the script deliberately preserves them. Changing a person's `slug`
+loses theirs, because the old file is deleted as a departed person.
+
 ---
 
 ## 5. Why author pages are switched off by default
@@ -158,9 +171,12 @@ upgrade cannot silently replace it.
 | File | Purpose |
 |---|---|
 | `layouts/_partials/hbx/blocks/publication-filter/block.html` | Search / type / year filters on the publications page |
-| `assets/css/hbx/blocks/tuwhiri-brand/style.css` | Two CSS overrides, see below |
+| `layouts/_partials/hbx/blocks/partner-logos/block.html` | The `logos` block plus an optional `image_dark:` per logo |
+| `assets/css/hbx/blocks/tuwhiri-brand/style.css` | Three CSS overrides, see below |
+| `i18n/en.yaml` | Replaces individual theme strings, e.g. "Find me on" → "Follow the programme" |
 | `data/themes/tuwhiri.yaml`, `data/fonts/tuwhiri.yaml` | Brand colours and typeface |
 | `scripts/zotero_sync.py`, `scripts/make_people.py` | Content generation |
+| `scripts/export_content.py`, `import_content.py`, `content_docx.py` | All site wording out to `CONTENT.md` / `CONTENT.docx` and back |
 
 **`publication-filter`** is a new block, not an override — the theme has no
 block by that name. The previous theme generation had a dedicated
@@ -168,7 +184,17 @@ block by that name. The previous theme generation had a dedicated
 it. The block renders the full list at build time and the script only hides and
 shows, so it degrades to a plain list without JavaScript.
 
-**`style.css`** fixes two things the theme gives no setting for:
+**`partner-logos`** exists because no theme block supports a dark-mode variant
+of an image, and CSS cannot swap an `<img>` source. It renders both files and
+hides one using the theme's `.dark` class. Without `image_dark:` it behaves
+exactly like `logos`.
+
+**Writing a new block:** the theme passes the block to its template as
+`.wcBlock` and the page as `.wcPage`, not `.block` / `.page`. Reading the wrong
+key fails silently — the block renders, just without its configured text. Both
+custom blocks use `.wcBlock | default .block`.
+
+**`style.css`** fixes three things the theme gives no setting for:
 
 1. The navigation drop-down rendered pale text on a white panel in light mode —
    a contrast ratio of 1.12:1, effectively invisible — because it inherits its
@@ -176,6 +202,11 @@ shows, so it degrades to a plain list without JavaScript.
 2. Partner logos were capped at 7rem wide, squashing anything wider than about
    2:1. Kea Aerospace (4.45:1) rendered at under half height. Cap raised to
    16rem.
+3. The author card under every post printed the full biography, turning the
+   foot of a multi-author page into a wall of text. It is clamped to three lines
+   there; the profile page still shows it in full. The supported alternative is
+   `profile: false` at the **top level** of `params.yaml` (not under
+   `hugoblox:`, where it is silently ignored), which removes the card entirely.
 
 ### One known theme regression, currently unpatched
 
@@ -199,7 +230,8 @@ is that `single.html` use the existing `page_metadata_authors` partial.
 
 Zotero group `6627926` → `.github/workflows/zotero-sync.yml` → `content/publications/`.
 
-Runs Sundays 19:00 UTC (Monday morning NZ) and on demand from the Actions tab.
+Runs Sundays 10:00 UTC — late Sunday evening in New Zealand (22:00 NZST,
+23:00 NZDT) — and on demand from the Actions tab.
 It writes only to the branch chosen in the `target_branch` input, default
 `draft`. It never touches `main`.
 
@@ -215,8 +247,18 @@ The script:
 - deletes pages whose Zotero record has gone, identified by the `zotero_key`
   in their front matter. Hand-written publication pages are never touched.
 
-Authentication: anonymous if the group library is world-readable, otherwise via
-a `ZOTERO_API_KEY` repository secret.
+Authentication: the group library is **not** world-readable (anonymous
+requests get HTTP 403), so the `ZOTERO_API_KEY` repository secret is required.
+The secret is set: a run on 21 September 2026 authenticated and committed.
+Secrets are write-only, so if a run ever fails at the authentication step,
+reissue the key in Zotero and save it again under the same name. For a local run, set the key for that one command:
+
+```bash
+ZOTERO_API_KEY=xxxxxxxx python3 scripts/zotero_sync.py --dry-run
+```
+
+Never put the key in a tracked file; it would be in the public history for
+good.
 
 **Never hand-edit `content/publications/`.** Fix the record in Zotero; the next
 sync overwrites local changes.
@@ -246,42 +288,24 @@ host is the safer long-term home than a free Netlify site.
 
 ## 9. Known issues and unfinished business
 
-These are live and worth attention:
+*Last reviewed September 2026.* The launch checklist is closed: CODEOWNERS
+names real reviewers; the leftover template workflows, `FUNDING.yml` and the
+working-note documents are gone; the EGU abstracts carry the right item type;
+the contact address is live; the site is served at `tuwhiri.ac.nz` with `www`
+redirecting to it; and the Zotero sync authenticates.
 
-1. **`.github/CODEOWNERS` still contains placeholder usernames**
-   (`@harald-github-username` and so on). Until real GitHub usernames are
-   filled in, review assignment on `main` does not work. **This is the most
-   important item on this list.**
+Two things remain, neither of which blocks anything:
 
-2. **Three leftover template workflows** in `.github/workflows/`:
-   - `upgrade.yml` — upgrades HugoBlox automatically every Monday 05:00 UTC.
-     An unattended theme upgrade on a site this customised is a poor idea.
-     Recommend deleting, or restricting to `workflow_dispatch` only.
-   - `publish.yaml` — deploys to GitHub Pages on every push to `main`,
-     duplicating Netlify. Recommend deleting.
-   - `import-publications.yml` — imports from a `publications.bib` that does
-     not exist. Superseded by the Zotero sync. Recommend deleting.
+1. **Quantifi Photonics has no dark-mode logo.** Its dark purple wordmark is
+   close to invisible on the dark background. Ask Quantifi for a reversed or
+   white version rather than inverting theirs, save it in
+   `assets/media/partners/`, and add `image_dark:` to its entry in
+   `content/_index.md`. Every other partner logo reads in both modes.
 
-3. **`.github/FUNDING.yml`** puts a "Sponsor" button on the repository pointing
-   at the theme author. Delete it.
-
-4. **Unused partner logo files** — `waikatoWhite.svg` and
-   `Q-Bifrost_LogoWhite.svg` are light-on-dark variants, but the logos block
-   uses one file for both colour modes and nothing references them. Either
-   remove them or add per-mode support. Also `kea-aerospace.png` is referenced
-   while `kea-aerospace.svg` exists — switching to the SVG will look sharper.
-
-5. **Both EGU abstracts have Zotero item type "Report"** and so appear under
-   Report in the publications type filter. Change the item type in Zotero to
-   Conference Paper.
-
-6. **`tuwhiri@otago.ac.nz`** is published as the contact address. Confirm it
-   exists and forwards to the Programme Manager — enquiries to a non-existent
-   address fail silently.
-
-7. **Documentation left over from the build** — `ORDERING.md`,
-   `DROPDOWN-FIX.md` and `HOWTO.md` were working notes, superseded by this file
-   and `CONTENT-GUIDE.md`. `BRAND.md` is worth keeping.
+2. **Author names in a publication's byline are not links** — the upstream
+   theme regression described in §6. HugoBlox has had no commits since
+   27 May 2026, so a fix is unlikely soon; the sidebar still links every team
+   author, so nothing is unreachable.
 
 ---
 
@@ -294,7 +318,10 @@ Whoever takes this on will need:
 - **Netlify** — access to the site. Confirm more than one person has it; a site
   owned by a single departing account is a real risk.
 - **Zotero** — membership of group `6627926`, at least read.
-- **Repository secrets** — `ZOTERO_API_KEY` if the library is not public.
+- **DNS for `tuwhiri.ac.nz`** — whoever manages the `.ac.nz` zone. Only
+  needed for new records (such as `www`); Netlify handles certificates.
+- **Repository secrets** — `ZOTERO_API_KEY`, required (the library is
+  private).
   Secrets are write-only and cannot be read back; a lost key must be reissued.
 
 Brand assets come from **Māui Studios**, who produced the identity. The colour
