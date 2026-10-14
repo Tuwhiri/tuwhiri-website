@@ -1,0 +1,14 @@
+schema: hugoblox/author/v1
+slug: james-luxon
+name:
+  display: James Luxon
+  given: James
+  family: Luxon
+role: PhD Candidate
+bio: 'James is a PhD student in the Resonant Optics Group at the University of Otago, where he completed a Bachelor of Science with Honours in 2025. His research focuses on the electro-optic conversion of millimetre-wave signals into the optical domain using whispering gallery mode resonators, with the goal of realising a sensitive, room-temperature millimetre-wave receiver.'
+affiliations:
+- name: University of Otago
+links: []
+user_groups:
+- Photonics
+research_area: photonics
