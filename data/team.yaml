@@ -486,3 +486,14 @@ people:
   #   area: photonics
   #   groups: [Students]
   #   match: [Doe]
+
+  - slug: james-luxon
+    name: James Luxon
+    role: PhD Candidate
+    org: University of Otago
+    bio: ''
+    orcid: ''
+    email: ''
+    area: photonics
+    groups: [Photonics]
+    match: [Luxon]
